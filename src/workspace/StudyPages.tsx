@@ -601,14 +601,31 @@ export function Flashcards() {
             flipped ? "Show question" : "Flip card to reveal explanation"
           }
         >
-          <span className="w-eyebrow">
-            {flipped ? "THE CONNECTION" : "CAN YOU RECALL?"}
-          </span>
-          <h2>{flipped ? card.options[card.answer] : card.prompt}</h2>
-          {flipped && <p>{card.explanation}</p>}
-          <span className="w-flip-hint">
-            <RotateCcw size={15} />
-            {flipped ? "Click to return to the question" : "Click to reveal"}
+          <span className="w-flashcard-inner">
+            <span className="w-flashcard-face" aria-hidden={flipped}>
+              <span className="w-eyebrow">CAN YOU RECALL?</span>
+              <span className="w-flashcard-title">{card.prompt}</span>
+              <span className="w-flip-hint">
+                <RotateCcw size={15} />
+                Click to reveal
+              </span>
+            </span>
+            <span
+              className="w-flashcard-face w-flashcard-back"
+              aria-hidden={!flipped}
+            >
+              <span className="w-eyebrow">THE CONNECTION</span>
+              <span className="w-flashcard-title">
+                {card.options[card.answer]}
+              </span>
+              <span className="w-flashcard-explanation">
+                {card.explanation}
+              </span>
+              <span className="w-flip-hint">
+                <RotateCcw size={15} />
+                Click to return to the question
+              </span>
+            </span>
           </span>
         </button>
         <div className="w-flashcard-actions">

@@ -112,6 +112,7 @@ function Shell() {
   const [menu, setMenu] = useState(false);
   const [changeGrade, setChangeGrade] = useState(false);
   const location = useLocation();
+  const [motionPaused, setMotionPaused] = useState(false);
   useEffect(() => {
     setMenu(false);
     window.scrollTo(0, 0);
@@ -156,7 +157,7 @@ function Shell() {
     return () => abort.abort();
   }, [state.grade, state.stream]);
   return (
-    <div className="workspace">
+    <div className={`workspace ${motionPaused ? "w-motion-paused" : ""}`}>
       <a href="#workspace-main" className="skip-link">
         Skip to workspace
       </a>
@@ -253,6 +254,13 @@ function Shell() {
           )}
         </main>
         <div className="w-bottom-note">
+          <button
+            className="w-motion-toggle"
+            aria-pressed={motionPaused}
+            onClick={() => setMotionPaused(!motionPaused)}
+          >
+            {motionPaused ? "Resume motion" : "Pause motion"}
+          </button>
           TIPIX · A little progress, a new possibility.
         </div>
       </div>

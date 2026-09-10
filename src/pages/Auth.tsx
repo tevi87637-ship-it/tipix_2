@@ -1,3 +1,4 @@
+import Atmosphere from "../components/Atmosphere";
 import { useRef, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -6,7 +7,6 @@ import {
   Eye,
   EyeOff,
   Check,
-  BookOpen,
   GraduationCap,
   LockKeyhole,
   Mail,
@@ -130,7 +130,18 @@ function AuthExperience({ mode }: { mode: Mode }) {
     return (
       <div className="a-field">
         <label htmlFor={`a-${key}`}>{label}</label>
-        <div className="a-input-wrap">
+        <div
+          className={`a-input-wrap ${password || key === "email" ? "has-leading-icon" : ""}`}
+        >
+          {password ? (
+            <LockKeyhole
+              className="a-leading-icon"
+              size={17}
+              aria-hidden="true"
+            />
+          ) : key === "email" ? (
+            <Mail className="a-leading-icon" size={17} aria-hidden="true" />
+          ) : null}
           <input
             id={`a-${key}`}
             name={key}
@@ -196,50 +207,19 @@ function AuthExperience({ mode }: { mode: Mode }) {
       ? "Good to see you again."
       : "Find your way back.";
   return (
-    <div className="auth-v2">
-      <aside className="a-story">
-        <Link to="/" className="a-back">
-          <ArrowLeft size={15} />
-          Back to TIPIX
-        </Link>
-        <div className="a-story-copy">
-          <p className="a-kicker">EVERY CONCEPT. A NEW CONNECTION.</p>
-          <h2>
-            Your next
-            <br />
-            “I get it”
-            <br />
-            <span>starts here.</span>
-          </h2>
-          <p>
-            A little curiosity.
-            <br />A path that’s made for you.
-          </p>
-        </div>
-        <div className="a-constellation" aria-hidden="true">
-          <div className="a-orbit a-orbit-one">
-            <i />
-            <i />
-          </div>
-          <div className="a-orbit a-orbit-two">
-            <i />
-            <i />
-          </div>
-          <div className="a-orbit a-orbit-three">
-            <i />
-          </div>
-          <div className="a-core">
-            <BookOpen size={30} strokeWidth={1} />
-          </div>
-          <span className="a-orbit-label label-learn">LEARN</span>
-          <span className="a-orbit-label label-connect">CONNECT</span>
-          <span className="a-orbit-label label-grow">GROW</span>
-        </div>
-        <div className="a-story-bottom">
-          <span>01 / CURIOSITY</span>
-          <span>∞ POSSIBILITIES</span>
-        </div>
-      </aside>
+    <div
+      className={`auth-v2 auth-cinematic ${isRegister ? "is-register" : ""}`}
+    >
+      <Atmosphere />
+      <div className="a-cinematic-intro">
+        <p className="a-kicker">CURIOSITY IS YOUR STARTING POINT</p>
+        <h2>
+          Understand a little deeper.
+          <br />
+          <span>Go a little further.</span>
+        </h2>
+        <p>Your next chapter of learning starts with you.</p>
+      </div>
       <section className="a-form-panel">
         <div className="a-form-container">
           <div className="a-topline">
@@ -598,7 +578,9 @@ function AuthExperience({ mode }: { mode: Mode }) {
           </div>
           <p className="a-secure-note">
             <LockKeyhole size={13} />
-            Your password is never shown in the review.
+            {isRegister
+              ? "Your password is never shown in the review."
+              : "Your learning. Your own space."}
           </p>
           {mode === "forgot" && (
             <Link to="/login" className="a-back-login">

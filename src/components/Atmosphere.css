@@ -1,0 +1,144 @@
+.t-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    48deg,
+    transparent 0 85px,
+    #9db0ff03 86px 87px
+  );
+}
+.t-atmosphere canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+.t-light-beam {
+  position: absolute;
+  left: calc(50% - 350px);
+  top: -210px;
+  width: 700px;
+  height: 950px;
+  transform-origin: 50% 0;
+  background: conic-gradient(
+    from 156deg at 50% 0,
+    transparent,
+    #8198ed20 10deg,
+    #bfcfff2c 22deg,
+    #5266eb15 37deg,
+    transparent 49deg
+  );
+  filter: blur(28px);
+  animation: t-beam 14s ease-in-out infinite alternate;
+}
+.t-light-haze {
+  position: absolute;
+  top: 170px;
+  left: calc(50% - 490px);
+  width: 980px;
+  height: 750px;
+  background: radial-gradient(ellipse, #5266eb29, transparent 67%);
+  animation: t-haze 10s ease-in-out infinite alternate;
+}
+.t-circuit {
+  position: absolute;
+  top: 470px;
+  width: calc(50% - 290px);
+  height: 150px;
+  border-bottom: 1px solid #859cff45;
+}
+.t-circuit-left {
+  left: 0;
+  border-right: 1px solid #859cff45;
+  border-bottom-right-radius: 36px;
+}
+.t-circuit-right {
+  right: 0;
+  border-left: 1px solid #859cff45;
+  border-bottom-left-radius: 36px;
+}
+.t-circuit:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 65px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #b7c7ff, transparent);
+  box-shadow: 0 0 12px #718bff;
+  animation: t-signal 6s ease-in-out infinite;
+}
+.t-circuit-right:after {
+  animation-direction: reverse;
+  animation-delay: -3s;
+}
+.t-motion-control {
+  position: absolute;
+  right: 28px;
+  top: 106px;
+  z-index: 2;
+  font-size: 11px;
+  color: #a7b3d5;
+  border: 1px solid #9aafef25;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #16162080;
+}
+.t-motion-control:hover {
+  color: #edf0ff;
+  border-color: #9aafef66;
+}
+.is-paused * {
+  animation-play-state: paused !important;
+}
+@keyframes t-beam {
+  from {
+    transform: rotate(-9deg);
+    opacity: 0.6;
+  }
+  to {
+    transform: rotate(9deg);
+    opacity: 1;
+  }
+}
+@keyframes t-haze {
+  from {
+    transform: translate(-70px, 20px) scale(0.9);
+  }
+  to {
+    transform: translate(70px, -25px) scale(1.12);
+  }
+}
+@keyframes t-signal {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    left: calc(100% - 65px);
+    opacity: 0;
+  }
+}
+@media (max-width: 600px) {
+  .t-motion-control {
+    top: 92px;
+    right: 20px;
+  }
+  .t-circuit {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-atmosphere * {
+    animation: none !important;
+  }
+  .t-motion-control {
+    display: none;
+  }
+}

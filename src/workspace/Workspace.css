@@ -1915,3 +1915,213 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Motion belongs to navigation, discovery and feedback; question text stays still. */
+.workspace .w-page-enter {
+  animation: none;
+}
+.workspace .w-page-enter > * {
+  animation: w-reveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.workspace .w-page-enter > :nth-child(2) {
+  animation-delay: 70ms;
+}
+.workspace .w-page-enter > :nth-child(3) {
+  animation-delay: 120ms;
+}
+.workspace .w-page-enter > :nth-child(4) {
+  animation-delay: 170ms;
+}
+.workspace .w-page-enter > :nth-child(n + 5) {
+  animation-delay: 210ms;
+}
+.workspace .w-course-card,
+.workspace .w-stat,
+.workspace .w-panel,
+.workspace .w-focus-card {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.3s,
+    box-shadow 0.3s;
+  background-image: linear-gradient(135deg, #9aaaff07, transparent 55%);
+}
+@media (hover: hover) {
+  .workspace .w-course-card:hover {
+    transform: translateY(-7px);
+    border-color: #9eb3ff88;
+    box-shadow:
+      0 18px 38px #080d203d,
+      0 0 30px #5266eb12;
+  }
+  .workspace .w-stat:hover {
+    transform: translateY(-3px);
+    border-color: #9eb3ff55;
+  }
+  .workspace .w-course-card:hover .w-course-icon {
+    transform: scale(1.1) rotate(-6deg);
+  }
+}
+.workspace .w-course-icon {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.workspace .w-button {
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.workspace .w-button:hover {
+  box-shadow: 0 6px 24px #5266eb30;
+}
+.workspace .w-button:active {
+  transform: scale(0.97);
+}
+.workspace .w-continue {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(ellipse at 90% 0, #7896e72e, transparent 65%),
+    linear-gradient(125deg, #29334f, #20273c);
+}
+.workspace .w-concept-orbit > i:after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #c0d2ff;
+  border-radius: 50%;
+  top: 20%;
+  left: 9%;
+  box-shadow: 0 0 18px #93aeff;
+}
+.workspace .w-concept-orbit > i {
+  animation: w-orbit-flow 12s linear infinite;
+}
+.workspace .w-concept-orbit > i:nth-child(2) {
+  animation-direction: reverse;
+  animation-duration: 17s;
+}
+.workspace .orbit-chip {
+  animation-duration: 4s;
+}
+.workspace .w-concept-orbit > span {
+  animation: w-float 5s ease-in-out infinite;
+}
+.workspace .w-flashcard {
+  display: block;
+  padding: 0;
+  perspective: 1200px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: 0;
+}
+.workspace .w-flashcard:hover {
+  transform: none;
+}
+.workspace .w-flashcard-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 0.7, 0.15, 1);
+  width: 100%;
+}
+.workspace .w-flashcard.flipped .w-flashcard-inner {
+  transform: rotateY(180deg);
+}
+.workspace .w-flashcard-face {
+  grid-area: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 350px;
+  padding: 38px;
+  border: 1px solid #9bb3f45c;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 50% 0, #546ba15c, transparent 70%),
+    linear-gradient(145deg, #242e46, #1c2233);
+  backface-visibility: hidden;
+  box-shadow: 0 24px 60px #080e1a45;
+}
+.workspace .w-flashcard-back {
+  transform: rotateY(180deg);
+  background:
+    radial-gradient(ellipse at 80% 0, #677fe65c, transparent 65%), #232b42;
+}
+.workspace .w-flashcard-title {
+  display: block;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.5;
+  margin: 20px 0;
+  max-width: 540px;
+}
+.workspace .w-flashcard-explanation {
+  font-size: 0.94rem;
+  color: #bcc8e5;
+  line-height: 1.7;
+}
+@keyframes w-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes w-orbit-flow {
+  from {
+    transform: rotate(-30deg) scaleY(0.65) rotate(0);
+  }
+  to {
+    transform: rotate(-30deg) scaleY(0.65) rotate(360deg);
+  }
+}
+@media (max-width: 600px) {
+  .workspace .w-flashcard-face {
+    padding: 25px;
+    min-height: 340px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace .w-page-enter > *,
+  .workspace .w-concept-orbit > i,
+  .workspace .w-concept-orbit > span {
+    animation: none !important;
+  }
+  .workspace .w-flashcard-inner {
+    transition: none;
+  }
+  .workspace .w-course-card:hover,
+  .workspace .w-stat:hover,
+  .workspace .w-course-card:hover .w-course-icon {
+    transform: none;
+  }
+}
+.workspace.w-motion-paused *,
+.workspace.w-motion-paused *:before,
+.workspace.w-motion-paused *:after {
+  animation-play-state: paused !important;
+}
+.workspace.w-motion-paused .w-page-enter > * {
+  animation: none;
+}
+.workspace.w-motion-paused .w-flashcard-inner {
+  transition: none;
+}
+.w-motion-toggle {
+  display: block;
+  margin: 0 auto 12px;
+  border: 1px solid #9aafef35;
+  border-radius: 20px;
+  padding: 6px 12px;
+  color: #a8b6d5;
+  font-size: 11px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .w-motion-toggle {
+    display: none;
+  }
+}
