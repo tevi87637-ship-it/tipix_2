@@ -1,6 +1,8 @@
 # TIPIX architecture and implementation sequence
 
-## Current architecture
+The current student frontend is documented in `STUDENT-WORKSPACE.md`; account-page details are in `ACCOUNT-PAGES.md`. The backend plan below remains unimplemented.
+
+## Initial Phase 1 architecture (historical)
 
 Browser → React Router → public page components and shared UI. Home lazily loads React Three Fiber/Three.js; GSAP owns reveal and scroll state, while the renderer owns crystal transforms. Auth pages perform only local form validation and send no requests. Browser storage is not used for passwords, roles, results, or analytics.
 

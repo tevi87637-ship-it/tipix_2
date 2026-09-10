@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4173",
     "build": "tsc -b && vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 4173"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "test:profile": "tsc src/lib/studentProfile.ts --outDir .sites-runtime/profile-test --target es2022 --module esnext --skipLibCheck && node --test tests/student-profile.test.mjs",
+    "test:workspace": "tsc src/workspace/data.ts --outDir .sites-runtime/workspace-test --target es2022 --module esnext --skipLibCheck && node --test tests/workspace.test.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^9.0.0",

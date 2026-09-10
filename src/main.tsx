@@ -8,10 +8,28 @@ import Schools from "./pages/Schools";
 import Auth from "./pages/Auth";
 import { ButtonLink } from "./components/UI";
 import "./styles.css";
+const WorkspaceRoutes = React.lazy(() => import("./workspace/WorkspaceRoutes"));
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route
+          path="app/*"
+          element={
+            <React.Suspense
+              fallback={
+                <div
+                  role="status"
+                  style={{ padding: "60px", color: "#b8c9ef" }}
+                >
+                  Opening your learning space…
+                </div>
+              }
+            >
+              <WorkspaceRoutes />
+            </React.Suspense>
+          }
+        />
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="courses" element={<Courses />} />

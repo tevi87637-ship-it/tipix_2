@@ -1,4 +1,4 @@
-# TIPIX — Phase 1
+# TIPIX — Frontend and student workspace
 
 A cinematic, responsive educational frontend built with React, Vite, TypeScript, Tailwind CSS, React Router, React Three Fiber, Three.js, and GSAP ScrollTrigger.
 
@@ -28,6 +28,12 @@ Deploy `dist/` to a static host with SPA fallback to `index.html` for direct rou
 - Frontend form validation with explicit pending-backend messaging. No account creation, password storage, authentication requests, or fake success.
 - Responsive layouts, focus states, reduced-motion support, a static WebGL fallback, and scene cleanup on route changes.
 - An illustrative dashboard. Every displayed statistic is sample data, not an actual learner record.
+
+## Student workspace update
+
+Login/signup now include a three-step student form and a separate preview entry into `/app/dashboard`. The workspace includes grade-specific courses, lessons, practice, exams, submissions, concept progress, rankings, flashcards, projects, local doubt drafts, profile, and settings. Preview progress stays in the browser tab. No real account is created. See `docs/ACCOUNT-PAGES.md` and `docs/STUDENT-WORKSPACE.md`.
+
+Run `npm run test:profile` and `npm run test:workspace` for the grade and data-contract checks.
 
 ## Scope
 
