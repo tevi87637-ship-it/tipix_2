@@ -14,6 +14,7 @@ export function Logo() {
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const accountPage = ["/login", "/register", "/forgot-password", "/verify-email", "/reset-password"].includes(location.pathname);
   useEffect(() => {
     setOpen(false);
     if (location.hash) {
@@ -83,7 +84,7 @@ export default function Layout() {
       <main id="main">
         <Outlet />
       </main>
-      <footer>
+      {!accountPage && <footer>
         <Logo />
         <span>Every concept opens a possibility.</span>
         <div>
@@ -91,7 +92,7 @@ export default function Layout() {
           <Link to="/for-schools">For schools</Link>
         </div>
         <small>© {new Date().getFullYear()} TIPIX</small>
-      </footer>
+      </footer>}
     </>
   );
 }

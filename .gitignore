@@ -5,3 +5,5 @@ dist/
 !.env.example
 .sites-runtime/
 *.tsbuildinfo
+
+supabase/.temp/

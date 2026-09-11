@@ -27,3 +27,11 @@ Checked 2026-09-10.
 - No backend, authorization, end-to-end persistence, or load testing is possible in this frontend-only phase. Capacity targets remain unverified.
 
 Temporary responsive QA files were removed before the final build and are not published.
+
+## September 11 — compact forms and real authentication integration
+
+- Removed account marketing headline/footer; inspected desktop registration and mobile login/signup at 390 × 844. Final mobile screenshot shows the full form and action without scrolling. Registration keeps account, studies and review steps. Very small windows, enlarged text, keyboard display and error messages can require scrolling; content is never clipped.
+- Supabase Auth public settings returned HTTP 200: email enabled, signup enabled, auto-confirm disabled.
+- Nine existing profile/curriculum tests passed. Transactional database checks passed for own-profile reads, cross-user rejection, anonymous rejection, unconfirmed-account rejection, grade/stream constraints and role/grade immutability. No users or profile rows remained after tests. Supabase security advisor returned no findings.
+- Password HTTP testing timed out from this environment; successful signup/login, recovery and actual email delivery remain unverified until SMTP/templates are configured and an inbox test is completed.
+- Landing source, global marketing styles and crystal scene are preserved. Learning activity data is still demonstration content, isolated per account in browser-tab storage.

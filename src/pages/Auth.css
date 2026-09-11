@@ -895,3 +895,51 @@
 .auth-v2.auth-cinematic .has-leading-icon input {
   padding-left: 42px;
 }
+/* Account tasks occupy the viewport rather than a marketing section. */
+.auth-v2.auth-cinematic {padding:102px 20px 20px;justify-content:center;min-height:100svh}
+.auth-v2.auth-cinematic .a-form-panel {max-width:460px;padding:26px 30px;background:linear-gradient(135deg,#b8c9ff12,#1a1e3299 40%,#7e95e30d) padding-box,linear-gradient(145deg,#bdd0ff75,#7c95ef16 45%,#a4baff55) border-box;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);box-shadow:inset 0 1px 0 #ffffff0d,0 24px 80px #05061150}
+.auth-cinematic.is-register .a-form-panel {max-width:540px}
+.auth-v2.auth-cinematic .a-topline {margin-bottom:14px}
+.auth-v2.auth-cinematic .a-mode-switch {margin-bottom:17px}
+.auth-v2.auth-cinematic .a-subtitle {margin:8px 0 20px}
+.auth-v2.auth-cinematic .a-field {margin-bottom:12px}
+.auth-v2.auth-cinematic .a-field label {margin-bottom:6px;font-size:12px}
+.auth-v2.auth-cinematic .a-input-wrap input,.auth-v2.auth-cinematic select {height:44px;padding-top:9px;padding-bottom:9px;background:#a9bbef0a}
+.auth-v2.auth-cinematic .a-input-wrap {background:#afc4ff0a;border-radius:11px}
+.auth-v2.auth-cinematic .a-form-actions {margin-top:18px}
+.auth-v2.auth-cinematic .a-submit {min-height:44px;padding:12px 17px}
+.auth-v2.auth-cinematic .a-field-note {font-size:10px;margin:4px 0 10px}
+.auth-v2.auth-cinematic .a-secure-note {margin-top:14px;font-size:10px}
+.auth-v2.auth-cinematic .a-steps {margin:0 0 18px}
+.auth-v2.auth-cinematic .a-status:empty {display:none}
+.auth-v2.auth-cinematic .a-status {font-size:12px;margin:10px 0 0}
+.auth-v2.auth-cinematic .a-course-preview {padding:12px;margin-top:12px}
+.auth-v2.auth-cinematic .a-grade-field {margin-top:12px}
+.auth-v2.auth-cinematic .a-grade-grid label {padding:9px 7px}
+.auth-v2.auth-cinematic .a-review dl>div {padding:7px 0}
+.auth-v2.auth-cinematic .a-confirm {font-size:11px;margin-top:14px}
+.auth-v2.auth-cinematic .a-teacher-note {font-size:10px;margin-top:8px}
+.auth-v2.auth-cinematic .t-motion-control {top:auto;bottom:16px;right:18px}
+@media(max-width:600px){.auth-v2.auth-cinematic{padding:88px 16px 42px;justify-content:center}.auth-v2.auth-cinematic .a-form-panel{padding:22px}.auth-v2.auth-cinematic .a-step-enter h1{font-size:1.4rem}.auth-v2.auth-cinematic .a-subtitle{font-size:11px;margin-bottom:16px}.auth-v2.auth-cinematic .a-input-wrap input{font-size:16px}.auth-v2.auth-cinematic .t-motion-control{bottom:8px}}
+@media(max-height:720px){.auth-v2.auth-cinematic{justify-content:flex-start;padding-top:92px}.auth-v2.auth-cinematic .a-form-panel{padding-top:19px;padding-bottom:19px}}
+.auth-v2.auth-cinematic .a-submit:disabled{opacity:.6;cursor:wait;transform:none}
+.a-verification-icon{display:grid;place-items:center;width:48px;height:48px;border:1px solid #a6b8ff55;border-radius:15px;color:#becdff;background:#8aa5ff12;margin:0 auto 22px}
+.auth-v2 .a-resend{display:block;font-size:12px;color:#b5c6ff;margin:18px auto}
+.auth-v2 .a-resend:disabled{color:#919bb2;cursor:default}
+.auth-v2.auth-cinematic .a-otp-input{letter-spacing:.15em;text-align:center}
+.auth-v2.auth-cinematic .a-topline {display:none}
+.auth-v2.auth-cinematic .a-account-fields {display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.auth-v2.auth-cinematic .a-wide {grid-column:1/-1}
+.auth-v2.auth-cinematic .a-mode-switch a {padding:9px}
+.auth-v2.auth-cinematic .a-secure-note {margin-top:12px}
+.auth-v2.auth-cinematic .a-teacher-note {display:none}
+.auth-v2.auth-cinematic .a-review {padding:12px 16px;background:#10142245}
+.auth-v2.auth-cinematic .a-review dl {margin:6px 0 12px}
+.auth-v2.auth-cinematic .a-review dl>div {padding:0;margin-top:7px;font-size:12px}
+.auth-v2.auth-cinematic .a-grade-field>p,.auth-v2.auth-cinematic .a-course-preview small {display:none}
+.auth-v2.auth-cinematic .a-course-preview {font-size:11px}
+@media(max-width:600px){.auth-v2.auth-cinematic .a-account-fields>.a-field:nth-child(-n+2){grid-column:1/-1}.auth-v2.auth-cinematic .a-account-fields{gap:0 10px}.auth-v2.auth-cinematic .a-account-fields .a-input-wrap:has(button) input{padding-left:10px;padding-right:34px}.auth-v2.auth-cinematic .a-account-fields .a-input-wrap:has(button)>.a-leading-icon{display:none}}
+.auth-v2.auth-cinematic .a-form-panel {min-height:0}
+.auth-v2.auth-cinematic .a-school-fields {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.auth-v2.auth-cinematic .a-grade-grid label {min-height:42px}
+.auth-v2.auth-cinematic .a-grade-field~.a-field .a-field-note {display:none}

@@ -1,3 +1,7 @@
+# Current account update
+
+Real Supabase authentication and protected student profiles are now connected. SMTP sender and OTP email templates still require owner configuration before enrollment works end to end. See [Authentication setup](docs/AUTHENTICATION.md). Learning activities remain demonstration content with local progress. The earlier phase notes below are historical.
+
 # TIPIX — Frontend and student workspace
 
 A cinematic, responsive educational frontend built with React, Vite, TypeScript, Tailwind CSS, React Router, React Three Fiber, Three.js, and GSAP ScrollTrigger.

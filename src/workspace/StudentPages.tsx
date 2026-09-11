@@ -1,3 +1,4 @@
+import { useAuth, useStudentProfile } from "../auth/AuthProvider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -597,20 +598,22 @@ export function Leaderboard() {
   );
 }
 export function Profile() {
+  const profile = useStudentProfile();
+  const {user} = useAuth();
   const { state, courses, attempts, points } = useWorkspace();
   return (
     <>
       <PageHeading
         eyebrow="YOUR LEARNING IDENTITY"
         title="Every learner has a starting point."
-        text="This profile represents your chosen preview class, not a registered account."
+        text="Your verified account and registered course selection."
       />
       <div className="w-profile-grid">
         <section className="w-panel w-profile-card">
-          <div className="w-profile-avatar">S</div>
-          <h2>Student preview</h2>
+          <div className="w-profile-avatar">{profile.full_name.charAt(0).toUpperCase()}</div>
+          <h2>{profile.full_name}</h2><p>{user?.email}</p><p>{profile.school_name} · {profile.school_city}</p>
           <p>Class {state.grade}</p>
-          <span className="w-tag">No account connected</span>
+          <span className="w-tag">Email verified · Student</span>
           <div className="w-profile-stats">
             <div>
               <strong>{attempts.length}</strong>
@@ -621,15 +624,12 @@ export function Profile() {
               <span>Points</span>
             </div>
           </div>
-          <WLink to="/register" secondary>
-            Student signup
-          </WLink>
+          <p className="w-note">Activity figures below are local demonstration results.</p>
         </section>
         <section className="w-panel">
           <h2>Your course selection</h2>
           <p className="w-note w-spaced">
-            Your saved account grade will determine these courses when
-            authentication is connected.
+            Your saved account grade determines these courses.
           </p>
           {courses.map((c) => (
             <Link key={c.id} to={`/app/courses/${c.id}`} className="w-next-row">
@@ -646,8 +646,7 @@ export function Profile() {
           <div className="w-info-strip">
             <Settings2 size={18} />
             <p>
-              Use the class selector at the top to explore a different course
-              plan. This starts a fresh preview.
+              Contact TIPIX if your registered class or stream needs correcting.
             </p>
           </div>
         </section>

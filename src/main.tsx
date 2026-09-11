@@ -1,3 +1,5 @@
+import { AuthProvider, RequireAuth } from "./auth/AuthProvider";
+import VerifyEmail from "./pages/VerifyEmail";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,7 +13,7 @@ import "./styles.css";
 const WorkspaceRoutes = React.lazy(() => import("./workspace/WorkspaceRoutes"));
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter><AuthProvider>
       <Routes>
         <Route
           path="app/*"
@@ -26,7 +28,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </div>
               }
             >
-              <WorkspaceRoutes />
+              <RequireAuth><WorkspaceRoutes /></RequireAuth>
             </React.Suspense>
           }
         />
@@ -34,6 +36,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route index element={<Home />} />
           <Route path="courses" element={<Courses />} />
           <Route path="for-schools" element={<Schools />} />
+          <Route path="verify-email" element={<VerifyEmail />} />
+          <Route path="reset-password" element={<VerifyEmail recovery />} />
           <Route path="login" element={<Auth mode="login" />} />
           <Route path="register" element={<Auth mode="register" />} />
           <Route path="forgot-password" element={<Auth mode="forgot" />} />
@@ -48,6 +52,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </AuthProvider></BrowserRouter>
   </React.StrictMode>,
 );

@@ -2125,3 +2125,5 @@
     display: none;
   }
 }
+.w-signout {display:flex;align-items:center;justify-content:space-between;width:100%;font-size:12px;padding:15px;color:#a8b7d6;border-top:1px solid #ffffff10;margin-top:15px}
+.w-grade-switch:disabled {cursor:default;opacity:1}

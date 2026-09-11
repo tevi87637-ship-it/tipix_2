@@ -1,3 +1,4 @@
+import { useStudentProfile } from "../auth/AuthProvider";
 import {
   createContext,
   useContext,
@@ -5,7 +6,6 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { useSearchParams } from "react-router-dom";
 import { isGrade, isStream } from "../lib/studentProfile";
 import { getCourses, type Course } from "./data";
 export type Attempt = {
@@ -37,10 +37,10 @@ const initial: State = {
   flashcards: [],
   doubts: [],
 };
-function load(): State {
+function load(storageKey: string): State {
   try {
     const s = JSON.parse(
-      sessionStorage.getItem("tipix-workspace-preview") || "null",
+      sessionStorage.getItem(storageKey) || "null",
     );
     if (
       s &&
@@ -72,22 +72,15 @@ const Context = createContext<null | {
   clearExam: () => void;
 }>(null);
 export function WorkspaceProvider({ children }: { children: ReactNode }) {
-  const [params] = useSearchParams();
+  const profile = useStudentProfile();
+  const storageKey = `tipix-demo-${profile.id}`;
   const [state, setState] = useState<State>(() => {
-    const saved = load(),
-      g = params.get("grade"),
-      s = params.get("stream") || "";
-    return g && isGrade(g) && (Number(g) < 11 || isStream(s))
-      ? saved.grade === g && saved.stream === (Number(g) < 11 ? "" : s)
-        ? saved
-        : { ...initial, grade: g, stream: Number(g) < 11 ? "" : s }
-      : saved;
+    const saved = load(storageKey), grade = String(profile.grade), stream = profile.stream || '';
+    return saved.grade === grade && saved.stream === stream ? saved : {...initial, grade, stream};
   });
   useEffect(() => {
-    try {
-      sessionStorage.setItem("tipix-workspace-preview", JSON.stringify(state));
-    } catch {}
-  }, [state]);
+    try { sessionStorage.setItem(storageKey, JSON.stringify(state)); } catch {}
+  }, [state, storageKey]);
   const courses = getCourses(state.grade, state.stream);
   const attempts = Object.values(state.answers);
   const points = attempts.filter((a) => a.correct).length * 10;
@@ -96,10 +89,7 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
     courses,
     attempts,
     points,
-    setGrade: (grade: string, stream: string) => {
-      if (!isGrade(grade) || (Number(grade) >= 11 && !isStream(stream))) return;
-      setState({ ...initial, grade, stream: Number(grade) < 11 ? "" : stream });
-    },
+    setGrade: () => { /* Account grade is managed by the persisted profile. */ },
     answer: (course: Course, id: string, selected: number) => {
       const question = course.questions.find((q) => q.id === id);
       if (

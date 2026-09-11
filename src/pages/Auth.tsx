@@ -1,6 +1,7 @@
+import { supabase } from "../lib/supabase";
 import Atmosphere from "../components/Atmosphere";
 import { useRef, useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   ArrowLeft,
@@ -11,7 +12,6 @@ import {
   LockKeyhole,
   Mail,
   Pencil,
-  Info,
 } from "lucide-react";
 import {
   GRADES,
@@ -30,6 +30,9 @@ export default function Auth({ mode }: { mode: Mode }) {
 }
 function AuthExperience({ mode }: { mode: Mode }) {
   const isRegister = mode === "register";
+  const navigate = useNavigate();
+  const [busy, setBusy] = useState(false);
+  const sending = useRef(false);
   const [step, setStep] = useState(0);
   const [data, setData] = useState<Registration>({ ...emptyRegistration });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -73,8 +76,9 @@ function AuthExperience({ mode }: { mode: Mode }) {
         ?.focus(),
     );
   }
-  function submit(e: FormEvent<HTMLFormElement>) {
+  async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending.current) return;
     if (isRegister) {
       const next = validateStep(data, step);
       if (Object.keys(next).length) {
@@ -93,10 +97,21 @@ function AuthExperience({ mode }: { mode: Mode }) {
           return;
         }
       }
-      registrationProfile(data);
-      setStatus(
-        "Your details are ready. Account creation is not connected yet, so nothing has been saved. Your selected class and stream will be used when registration is enabled.",
-      );
+      const { email, ...profile } = registrationProfile(data);
+      sending.current = true; setBusy(true); setStatus("");
+      try {
+        const { data: result, error } = await supabase.auth.signUp({email, password:data.password, options:{data:profile}});
+        if (error) {setStatus(authError(error));return;}
+        if (result.session) {
+          // Do not silently accept an auto-confirmed signup when email verification is required.
+          await supabase.auth.signOut({scope:'local'});
+          setStatus("Email confirmation must be enabled for this project. Contact TIPIX before continuing.");
+          return;
+        }
+        setData(d=>({...d,password:'',confirmPassword:''}));
+        navigate('/verify-email',{state:{email,requested:true}});
+      } catch {setStatus("Unable to reach sign-up. Check your connection and try again.");}
+      finally {sending.current=false;setBusy(false);}
       return;
     }
     const next: Record<string, string> = {};
@@ -108,12 +123,28 @@ function AuthExperience({ mode }: { mode: Mode }) {
       fail(next);
       return;
     }
-    setStatus(
-      mode === "forgot"
-        ? "Password recovery is not connected yet. No email has been sent."
-        : "Sign-in is not connected yet. No login attempt has been made.",
-    );
+    sending.current=true;setBusy(true);setStatus("");
+    const email = data.email.trim().toLowerCase();
+    try {
+      if(mode==='forgot') {
+        const {error}=await supabase.auth.resetPasswordForEmail(email);
+        if(error){setStatus(authError(error));return;}
+        navigate('/reset-password',{state:{email,requested:true}});
+      } else {
+        const {data:result,error}=await supabase.auth.signInWithPassword({email,password:data.password});
+        if(error){
+          if(error.code==='email_not_confirmed') navigate('/verify-email',{state:{email}});
+          else setStatus(authError(error));
+          return;
+        }
+        if(!result.user?.email_confirmed_at){setStatus('Verify your email to continue.');return;}
+        setData(d=>({...d,password:''}));
+        navigate('/app/dashboard',{replace:true});
+      }
+    } catch {setStatus('Unable to connect. Check your connection and try again.');}
+    finally {sending.current=false;setBusy(false);}
   }
+
   function field(
     key:
       | "fullName"
@@ -199,9 +230,9 @@ function AuthExperience({ mode }: { mode: Mode }) {
   }
   const title = isRegister
     ? [
-        "Make room for possibility.",
-        "Make this learning yours.",
-        "A quick check. A clear start.",
+        "Create your student account.",
+        "Choose your course level.",
+        "Review your details.",
       ][step]
     : mode === "login"
       ? "Good to see you again."
@@ -211,15 +242,6 @@ function AuthExperience({ mode }: { mode: Mode }) {
       className={`auth-v2 auth-cinematic ${isRegister ? "is-register" : ""}`}
     >
       <Atmosphere />
-      <div className="a-cinematic-intro">
-        <p className="a-kicker">CURIOSITY IS YOUR STARTING POINT</p>
-        <h2>
-          Understand a little deeper.
-          <br />
-          <span>Go a little further.</span>
-        </h2>
-        <p>Your next chapter of learning starts with you.</p>
-      </div>
       <section className="a-form-panel">
         <div className="a-form-container">
           <div className="a-topline">
@@ -271,7 +293,7 @@ function AuthExperience({ mode }: { mode: Mode }) {
             <p className="a-subtitle">
               {isRegister
                 ? [
-                    "A few details today. A world to explore tomorrow.",
+                    "Start with your name, email and password.",
                     "Your current class helps us choose the right courses.",
                     "Check your details before taking the next step.",
                   ][step]
@@ -281,7 +303,7 @@ function AuthExperience({ mode }: { mode: Mode }) {
             </p>
             <form ref={form} onSubmit={submit} noValidate>
               {isRegister && step === 0 && (
-                <>
+                <div className="a-account-fields">
                   {field(
                     "fullName",
                     "Student’s full name",
@@ -289,30 +311,24 @@ function AuthExperience({ mode }: { mode: Mode }) {
                     "name",
                   )}
                   {field("email", "Email address", "you@example.com", "email")}
-                  <p className="a-field-note">
-                    Use an email you can access for account verification and
-                    recovery.
-                  </p>
                   {field(
                     "password",
                     "Create a password",
                     "At least 8 characters",
                     "new-password",
                   )}
-                  <p id="password-help" className="a-field-note">
-                    Use 8–128 characters. A longer, unique passphrase is a good
-                    choice.
-                  </p>
                   {field(
                     "confirmPassword",
                     "Confirm password",
                     "Enter your password again",
                     "new-password",
                   )}
-                </>
+                  <p id="password-help" className="a-field-note a-wide">Use 8–128 characters and a unique passphrase.</p>
+                </div>
               )}
               {isRegister && step === 1 && (
                 <>
+                  <div className="a-school-fields">
                   {field(
                     "school",
                     "School name",
@@ -325,6 +341,7 @@ function AuthExperience({ mode }: { mode: Mode }) {
                     "For example, Hyderabad",
                     "address-level2",
                   )}
+                  </div>
                   <fieldset className="a-grade-field">
                     <legend>Which class are you studying in?</legend>
                     <p>
@@ -541,13 +558,13 @@ function AuthExperience({ mode }: { mode: Mode }) {
                     <ArrowLeft size={18} />
                   </button>
                 )}
-                <button className="a-submit" type="submit">
-                  {isRegister
+                <button className="a-submit" type="submit" disabled={busy} aria-busy={busy}>
+                  {busy ? "Please wait…" : isRegister
                     ? step === 0
                       ? "Continue to your studies"
                       : step === 1
                         ? "Review your details"
-                        : "Confirm student details"
+                        : "Create account"
                     : mode === "login"
                       ? "Log in"
                       : "Continue with email"}
@@ -558,23 +575,6 @@ function AuthExperience({ mode }: { mode: Mode }) {
                 {status}
               </p>
             </form>
-          </div>
-          <Link
-            className="a-preview-entry"
-            to={
-              isRegister && step === 2
-                ? `/app/dashboard?grade=${data.grade}&stream=${data.stream}`
-                : "/app/dashboard"
-            }
-          >
-            Explore the student workspace preview <ArrowRight size={15} />
-          </Link>
-          <div className="a-service-note">
-            <Info size={15} />
-            <p>
-              Account preview — sign-in and account creation are not connected
-              yet. Details entered here are not saved.
-            </p>
           </div>
           <p className="a-secure-note">
             <LockKeyhole size={13} />
@@ -597,4 +597,14 @@ function AuthExperience({ mode }: { mode: Mode }) {
       </section>
     </div>
   );
+}
+
+export function authError(error: {code?:string;status?:number;message:string}) {
+  if(error.status===429 || error.code?.includes('rate_limit')) return 'Too many attempts. Please wait before trying again.';
+  if(error.code==='invalid_credentials') return 'Email or password is incorrect.';
+  if(error.code==='weak_password') return 'Choose a stronger, unique password.';
+  if(error.code==='email_address_not_authorized' || /smtp|sending confirmation|sending recovery/i.test(error.message)) return 'Email delivery is not ready. Please contact TIPIX to finish email setup.';
+  if(error.code==='otp_expired') return 'This code is invalid or has expired. Request a new code.';
+  if(error.code==='user_already_exists') return 'Unable to create this account. Try logging in or resetting your password.';
+  return 'The request could not be completed. Please check your details and try again.';
 }

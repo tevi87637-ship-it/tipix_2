@@ -1,3 +1,4 @@
+import { useAuth, useStudentProfile } from "../auth/AuthProvider";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import {
@@ -19,7 +20,6 @@ import {
   ChevronDown,
   FlaskConical,
 } from "lucide-react";
-import { GRADES, STREAMS } from "../lib/studentProfile";
 import { WorkspaceProvider, useWorkspace } from "./WorkspaceContext";
 import "./Workspace.css";
 const links = [
@@ -34,84 +34,13 @@ const links = [
   ["projects", "Projects", FolderKanban],
   ["doubts", "My doubts", MessageCircle],
 ] as const;
-function GradeSetup({ onClose }: { onClose?: () => void }) {
-  const { state, setGrade } = useWorkspace();
-  const [g, setG] = useState(state.grade);
-  const [s, setS] = useState(state.stream);
-  return (
-    <section className="w-setup">
-      <span className="w-eyebrow">STUDENT WORKSPACE PREVIEW</span>
-      <h1>Make this space yours.</h1>
-      <p>
-        Choose a class to explore its course plan. This is a demo, and no
-        account is required.
-      </p>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setGrade(g, s);
-          onClose?.();
-        }}
-      >
-        <label htmlFor="w-grade">Current class</label>
-        <select
-          id="w-grade"
-          value={g}
-          required
-          onChange={(e) => {
-            setG(e.target.value);
-            setS("");
-          }}
-        >
-          <option value="">Choose your class</option>
-          {GRADES.map((n) => (
-            <option value={n} key={n}>
-              Class {n}
-            </option>
-          ))}
-        </select>
-        {Number(g) >= 11 && (
-          <>
-            <label htmlFor="w-stream">Subject stream</label>
-            <select
-              id="w-stream"
-              value={s}
-              required
-              onChange={(e) => setS(e.target.value)}
-            >
-              <option value="">Choose your stream</option>
-              {Object.entries(STREAMS).map(([k, v]) => (
-                <option value={k} key={k}>
-                  {v.label}
-                </option>
-              ))}
-            </select>
-          </>
-        )}
-        {state.grade && (
-          <p className="w-note">
-            Switching classes starts a fresh preview and clears the current
-            tab’s sample answers.
-          </p>
-        )}
-        <button className="w-button" type="submit">
-          {state.grade ? "Start a fresh class preview" : "Explore my workspace"}
-          <ArrowUpRight size={16} />
-        </button>
-        {onClose && (
-          <button className="w-text-button" type="button" onClick={onClose}>
-            Keep current class
-          </button>
-        )}
-      </form>
-    </section>
-  );
-}
 function Shell() {
   const { state } = useWorkspace();
   const [menu, setMenu] = useState(false);
-  const [changeGrade, setChangeGrade] = useState(false);
   const location = useLocation();
+  const profile = useStudentProfile();
+  const {signOut} = useAuth();
+  const [signOutError, setSignOutError] = useState("");
   const [motionPaused, setMotionPaused] = useState(false);
   useEffect(() => {
     setMenu(false);
@@ -191,10 +120,7 @@ function Shell() {
             <Settings size={18} />
             Settings
           </NavLink>
-          <Link to="/login" className="w-exit">
-            Back to account pages
-            <ArrowUpRight size={14} />
-          </Link>
+          <button className="w-exit w-signout" onClick={() => void signOut().catch(e=>setSignOutError(e.message))}>Sign out <ArrowUpRight size={14} /></button><p className="w-note" role="status">{signOutError}</p>
         </div>
       </aside>
       {menu && (
@@ -220,7 +146,7 @@ function Shell() {
           <div>
             <button
               className="w-grade-switch"
-              onClick={() => setChangeGrade(true)}
+              disabled title="Your registered class determines your courses"
             >
               <GraduationIcon />
               {state.grade ? `Class ${state.grade}` : "Choose class"}
@@ -229,29 +155,22 @@ function Shell() {
             <Link
               className="w-avatar"
               to="/app/profile"
-              aria-label="Your preview profile"
+              aria-label="Your student profile"
             >
-              S
+              {profile.full_name.charAt(0).toUpperCase()}
             </Link>
           </div>
         </header>
         <div className="w-preview-banner">
           <FlaskConical size={14} />
           <span>
-            Student preview · Progress stays in this browser tab. No live
-            account or school records.
+            Verified student account · Learning activities are demonstration content. Practice progress stays in this browser tab.
           </span>
         </div>
         <main id="workspace-main" className="w-content">
-          {!state.grade || changeGrade ? (
-            <GradeSetup
-              onClose={state.grade ? () => setChangeGrade(false) : undefined}
-            />
-          ) : (
-            <div className="w-page-enter" key={location.pathname}>
-              <Outlet />
-            </div>
-          )}
+          <div className="w-page-enter" key={location.pathname}>
+            <Outlet />
+          </div>
         </main>
         <div className="w-bottom-note">
           <button
