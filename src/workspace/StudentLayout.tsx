@@ -39,14 +39,16 @@ function Shell() {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
   const profile = useStudentProfile();
+  const currentPage = links.find(([path]) => location.pathname.split("/")[2] === path)?.[1]
+    || (location.pathname.includes("settings") ? "Settings" : "Profile");
   const {signOut} = useAuth();
   const [signOutError, setSignOutError] = useState("");
   const [motionPaused, setMotionPaused] = useState(false);
   useEffect(() => {
     setMenu(false);
     window.scrollTo(0, 0);
-    document.title = "TIPIX — Student workspace";
-  }, [location.pathname]);
+    document.title = `${currentPage} — TIPIX`;
+  }, [location.pathname, currentPage]);
   useEffect(() => {
     const model = (
       document as Document & {
@@ -141,7 +143,7 @@ function Shell() {
             >
               <Menu size={20} />
             </button>
-            <span>Learning, one connection at a time.</span>
+            <span className="w-breadcrumb">Your workspace <span aria-hidden="true">/</span> <strong>{currentPage}</strong></span>
           </div>
           <div>
             <button

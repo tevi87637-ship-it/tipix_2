@@ -128,6 +128,7 @@ export function Empty({
   );
 }
 export function Dashboard() {
+  const profile = useStudentProfile();
   const { courses, attempts, points, state } = useWorkspace();
   const recent = [...attempts]
     .sort((a, b) => b.at - a.at)
@@ -154,10 +155,24 @@ export function Dashboard() {
   return (
     <>
       <PageHeading
-        eyebrow="A LITTLE CURIOSITY GOES A LONG WAY"
-        title="Your next possibility starts here."
+        eyebrow="YOUR DAILY LEARNING SPACE"
+        title={`Welcome back, ${profile.full_name.split(" ")[0]}.`}
         text={`Your Class ${state.grade} learning space. One concept, one question, one step forward.`}
       />
+      <nav className="w-learning-journey" aria-label="Your learning journey">
+        {[
+          { title: "Learn", text: "Explore your next concept", to: `/app/courses/${next.id}`, Icon: BookOpen },
+          { title: "Practice", text: "Put understanding to work", to: `/app/practice/${next.id}`, Icon: Target },
+          { title: "Review", text: "Find the missing connection", to: "/app/submissions", Icon: Layers },
+          { title: "Improve", text: "See your concept progress", to: "/app/concept-progress", Icon: TrendingUp },
+        ].map(({ title, text, to, Icon }, i) => (
+          <Link key={title} to={to}>
+            <span className="w-journey-icon"><Icon size={19} /></span>
+            <div><span className="w-journey-number">0{i + 1}</span><strong>{title}</strong><small>{text}</small></div>
+            <ArrowUpRight size={15} className="w-journey-arrow" />
+          </Link>
+        ))}
+      </nav>
       <div className="w-dashboard-top">
         <div className="w-continue">
           <div>
@@ -342,7 +357,12 @@ export function Dashboard() {
   );
 }
 export function WorkspaceCourses() {
-  const { courses, state } = useWorkspace();
+  const { courses, state, attempts } = useWorkspace();
+  const [filter, setFilter] = useState("All subjects");
+  const visibleCourses = courses.filter(c => {
+    const done = attempts.filter(a => a.courseId === c.id).length;
+    return filter === "All subjects" || (filter === "Not started" ? done === 0 : filter === "Completed" ? done === c.questions.length : done > 0 && done < c.questions.length);
+  });
   return (
     <>
       <PageHeading
@@ -350,8 +370,15 @@ export function WorkspaceCourses() {
         title="Follow the question that interests you."
         text="Open a subject, explore a concept, and put your understanding to work."
       />
+      <div className="w-course-filters" aria-label="Filter courses">
+        {["All subjects", "In progress", "Not started", "Completed"].map(label => (
+          <button key={label} aria-pressed={filter === label} onClick={() => setFilter(label)}>{label}</button>
+        ))}
+      </div>
+      <p className="w-course-count" role="status">{visibleCourses.length} {visibleCourses.length === 1 ? "subject" : "subjects"} · Class {state.grade}</p>
+      {!visibleCourses.length && <Empty title="A fresh chapter awaits." text="No subjects match this filter yet. Choose All subjects to explore your course plan." />}
       <div className="w-course-grid">
-        {courses.map((c) => (
+        {visibleCourses.map((c) => (
           <CourseCard key={c.id} course={c} />
         ))}
       </div>

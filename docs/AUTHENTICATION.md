@@ -12,8 +12,8 @@ The Supabase project was verified active, with email authentication enabled, sig
 
 The connector can manage this project's database but does not expose Auth SMTP/template settings. The supplied publishable key does not authorize changing these settings. No SMTP credentials were supplied. Do these steps directly in Supabase; never paste an app password into chat, GitHub or a VITE_ variable.
 
-1. For tipixcompany@gmail.com, enable Google 2-Step Verification and create an app password if the account supports it.
-2. In Supabase Authentication → Email → SMTP Settings, set sender email and SMTP username to tipixcompany@gmail.com, sender name TIPIX, host smtp.gmail.com, port 587 (TLS), and the Gmail app password as the SMTP password.
+1. For edpixcompany@gmail.com, enable Google 2-Step Verification and create an app password if the account supports it.
+2. In Supabase Authentication → Email → SMTP Settings, set sender email and SMTP username to edpixcompany@gmail.com, sender name TIPIX, host smtp.gmail.com, port 587 (TLS), and the Gmail app password as the SMTP password.
 3. In Authentication → Email Templates → Confirm signup, paste supabase/templates/confirmation.html. For Reset password, paste supabase/templates/recovery.html. Both contain {{ .Token }} and no confirmation link. Templates are prepared in this repository, not applied to the hosted Auth configuration.
 4. Keep email confirmation enabled. Set a short OTP expiry (for example 600 seconds), six-digit OTPs, a 60-second resend interval, and a server password minimum of at least eight characters to match the client. Configure Auth rate limits and CAPTCHA for public enrollment; the current client handles rate-limit errors and duplicate clicks but is not an anti-abuse service.
 5. Set the Auth Site URL to the TIPIX deployment. Test with an inbox you control: signup, code confirmation, password login, recovery code, new password, sign-out, expired code and resend. Do not disable email confirmation to work around delivery errors.
