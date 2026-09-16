@@ -4,7 +4,7 @@ export async function academic<T>(op:string,payload:Record<string,unknown>={}):P
  if(error) throw new Error(error.message);
  return data as T;
 }
-export type Concept={id:string;chapter_title:string;concept_title:string;subject:string;academic_year:string;official_source:string;question_count:number;lesson:string|null;lesson_rights_reference:string|null};
+export type Concept={id:string;subtopic?:string;chapter_title:string;concept_title:string;subject:string;academic_year:string;official_source:string;question_count:number;lesson:string|null;lesson_rights_reference:string|null};
 export type Source={id:string;source_name:string;source_type:string;rights_status:string;active:boolean;base_url:string};
 export type Question={id:string;concept_id:string;question_text:string;question_type:string;options:string[];marks:number;negative_marks:number;source_id:string;source_exam:string|null;source_year:number|null;source_session:string|null;source_shift:string|null;source_paper:string|null;source_question_number:string|null;source_page:string|null;source_url:string;rights_reference:string};
 export type Attempt={id:string;question_id:string;selected_answer:unknown;correct:boolean;marks_earned:number;marks_available:number;points:number;attempt_number:number;created_at:string;concept_title:string;question_text:string;source_name:string};

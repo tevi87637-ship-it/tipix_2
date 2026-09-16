@@ -1,3 +1,4 @@
+import {LearningCourses,ChapterJourney,ConceptTasks} from "../academic/LearningJourney";
 import {AcademicProvider} from "../academic/AcademicContext";
 import {AcademicDashboard, AcademicRecords, CurriculumPanel, EvidencePanel, VerifiedPractice, Readiness, SourceLibrary, ConceptRoom} from "../academic/AcademicPages";
 import StaffPages from "../academic/StaffPages";
@@ -29,7 +30,9 @@ export default function WorkspaceRoutes() {
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AcademicDashboard />} />
         <Route path="demo/dashboard" element={<Dashboard />} />
-        <Route path="courses" element={<><CurriculumPanel/><WorkspaceCourses /></>} />
+        <Route path="courses" element={<LearningCourses/>} />
+        <Route path="demo/courses" element={<WorkspaceCourses/>} />
+        <Route path="chapters/:chapter" element={<ChapterJourney/>} />
         <Route path="courses/:courseId" element={<CourseDetail />} />
         <Route path="practice" element={<VerifiedPractice />} />
         <Route path="demo/practice" element={<Practice />} />
@@ -58,4 +61,4 @@ export default function WorkspaceRoutes() {
   );
 }
 
-function ConceptRoute(){const{conceptId}=useParams();return <ConceptRoom id={conceptId||""}/>;}
+function ConceptRoute(){const{conceptId}=useParams();return <ConceptTasks key={conceptId} id={conceptId||""}/>;}
