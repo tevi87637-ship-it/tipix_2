@@ -47,7 +47,7 @@ export function CourseDetail() {
         eyebrow={`${c.name.toUpperCase()} · CONCEPT SAMPLER`}
         title={c.chapter}
         text="Understand the idea, follow the connections, then test it in practice."
-        action={<WLink to={`/app/practice/${c.id}`}>Start practice</WLink>}
+        action={<WLink to={`/app/demo/practice/${c.id}`}>Start practice</WLink>}
       />
       <div className={`w-path-surface ${c.theme}`}>
         <div
@@ -111,7 +111,7 @@ export function CourseDetail() {
               This short overview is original demonstration content. A complete
               lesson sequence will be added with the reviewed curriculum.
             </p>
-            <WLink to={`/app/practice/${c.id}`}>Put it into practice</WLink>
+            <WLink to={`/app/demo/practice/${c.id}`}>Put it into practice</WLink>
           </div>
           <aside>
             <span className="w-eyebrow">YOUR LEARNING LOOP</span>
@@ -137,7 +137,7 @@ export function CourseDetail() {
           <Empty
             title="Ready to put the idea to work?"
             text={`Try ${c.questions.length} original demonstration questions with immediate explanations.`}
-            to={`/app/practice/${c.id}`}
+            to={`/app/demo/practice/${c.id}`}
             label="Start practice"
           />
         </div>
@@ -147,7 +147,7 @@ export function CourseDetail() {
             icon={LockKeyhole}
             title="This part of the path is planned."
             text="NCERT questions and final assessments require reviewed content. You can try the original practice sampler now."
-            to={`/app/practice/${c.id}`}
+            to={`/app/demo/practice/${c.id}`}
           />
         </div>
       )}
@@ -190,7 +190,7 @@ export function Practice() {
             return (
               <Link
                 className="w-panel w-practice-choice"
-                to={`/app/practice/${course.id}`}
+                to={`/app/demo/practice/${course.id}`}
                 key={course.id}
               >
                 <CourseIcon id={course.id} />
@@ -213,7 +213,7 @@ export function Practice() {
       <Empty
         title="Choose a subject in your class."
         text="This practice set isn’t in the selected course plan."
-        to="/app/practice"
+        to="/app/demo/practice"
       />
     );
   const question = c.questions[index];
@@ -225,7 +225,7 @@ export function Practice() {
   const done = count === c.questions.length;
   return (
     <>
-      <Link className="w-back-link" to="/app/practice">
+      <Link className="w-back-link" to="/app/demo/practice">
         <ArrowLeft size={15} />
         All practice sets
       </Link>

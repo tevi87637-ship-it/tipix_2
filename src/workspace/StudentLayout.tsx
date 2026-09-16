@@ -30,6 +30,10 @@ const links = [
   ["submissions", "Submissions", Send],
   ["concept-progress", "Concept progress", ChartNoAxesCombined],
   ["leaderboard", "Leaderboard", Trophy],
+  ["mistakes", "Mistake memory", FlaskConical],
+  ["readiness", "Goal readiness", Trophy],
+  ["sources", "Sources", BookOpen],
+  ["staff", "Staff workspace", UserRound],
   ["flashcards", "Flashcards", Layers],
   ["projects", "Projects", FolderKanban],
   ["doubts", "My doubts", MessageCircle],
@@ -166,7 +170,7 @@ function Shell() {
         <div className="w-preview-banner">
           <FlaskConical size={14} />
           <span>
-            Verified student account · Learning activities are demonstration content. Practice progress stays in this browser tab.
+            Verified practice is saved to your account. Concept samplers and demo exams remain clearly labelled demonstrations.
           </span>
         </div>
         <main id="workspace-main" className="w-content">
