@@ -1,3 +1,5 @@
+import DoubtsInbox from "../academic/DoubtsInbox";
+import Syllabus from "../academic/Syllabus";
 import {LearningCourses,ChapterJourney,ConceptTasks} from "../academic/LearningJourney";
 import {AcademicProvider} from "../academic/AcademicContext";
 import {AcademicDashboard, AcademicRecords, CurriculumPanel, EvidencePanel, VerifiedPractice, Readiness, SourceLibrary, ConceptRoom} from "../academic/AcademicPages";
@@ -30,6 +32,7 @@ export default function WorkspaceRoutes() {
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AcademicDashboard />} />
         <Route path="demo/dashboard" element={<Dashboard />} />
+        <Route path="syllabus" element={<Syllabus/>} />
         <Route path="courses" element={<LearningCourses/>} />
         <Route path="demo/courses" element={<WorkspaceCourses/>} />
         <Route path="chapters/:chapter" element={<ChapterJourney/>} />
@@ -47,7 +50,8 @@ export default function WorkspaceRoutes() {
         <Route path="demo/leaderboard" element={<Leaderboard />} />
         <Route path="flashcards" element={<Flashcards />} />
         <Route path="projects" element={<Projects />} />
-        <Route path="doubts" element={<Doubts />} />
+        <Route path="doubts" element={<DoubtsInbox />} />
+        <Route path="demo/doubts" element={<Doubts />} />
         <Route path="profile" element={<><EvidencePanel/><Profile /></>} />
         <Route path="mistakes" element={<AcademicRecords mode="mistakes" />} />
         <Route path="readiness" element={<Readiness />} />

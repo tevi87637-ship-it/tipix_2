@@ -1,0 +1,36 @@
+begin;
+do $$
+declare s1 uuid:=gen_random_uuid();s2 uuid:=gen_random_uuid();teacher uuid:=gen_random_uuid();rid uuid:=gen_random_uuid();did uuid;r jsonb;blocked boolean;
+begin
+ insert into auth.users(id,email,email_confirmed_at) values(s1,'doubt-1@example.invalid',now()),(s2,'doubt-2@example.invalid',now()),(teacher,'doubt-teacher@example.invalid',now());
+ insert into public.tipix_student_profiles(id,full_name,school_name,school_city,grade,stream) values(s1,'Fixture One','Test School','Test City',12,'pcm'),(s2,'Fixture Two','Test School','Test City',12,'pcm');
+ insert into tipix_private.academic_staff values(teacher,'teacher');
+ insert into tipix_private.academic_teacher_students values(teacher,s1);
+ perform set_config('request.jwt.claim.sub',s1::text,true);execute 'set local role authenticated';
+ r:=public.doubts_api('create',jsonb_build_object('title','A test question','body','How does this work?','request_id',rid));did:=(r->>'id')::uuid;
+ r:=public.doubts_api('create',jsonb_build_object('title','A test question','body','How does this work?','request_id',rid));if r->>'id'<>did::text then raise exception 'FAIL: duplicate thread';end if;
+ r:=public.doubts_api('detail',jsonb_build_object('id',did));if jsonb_array_length(r->'messages')<>1 then raise exception 'FAIL: duplicate initial message';end if;
+ blocked:=false;begin perform * from public.academic_doubts;exception when insufficient_privilege then blocked:=true;end;if not blocked then raise exception 'FAIL: direct table access';end if;
+ perform set_config('request.jwt.claim.sub',s2::text,true);
+ r:=public.doubts_api('list');if jsonb_array_length(r)<>0 then raise exception 'FAIL: cross-student listing';end if;
+ blocked:=false;begin perform public.doubts_api('detail',jsonb_build_object('id',did));exception when insufficient_privilege then blocked:=true;end;if not blocked then raise exception 'FAIL: cross-student detail';end if;
+ blocked:=false;begin perform public.doubts_api('reply',jsonb_build_object('id',did,'body','Unauthorized reply','request_id',gen_random_uuid()));exception when insufficient_privilege then blocked:=true;end;if not blocked then raise exception 'FAIL: cross-student reply';end if;
+ perform set_config('request.jwt.claim.sub',teacher::text,true);
+ r:=public.doubts_api('list');if jsonb_array_length(r)<>1 then raise exception 'FAIL: assigned teacher list';end if;
+ rid:=gen_random_uuid();perform public.doubts_api('reply',jsonb_build_object('id',did,'body','Teacher explanation','request_id',rid));perform public.doubts_api('reply',jsonb_build_object('id',did,'body','Teacher explanation','request_id',rid));
+ r:=public.doubts_api('detail',jsonb_build_object('id',did));if jsonb_array_length(r->'messages')<>2 then raise exception 'FAIL: duplicate reply';end if;
+ if not exists(select 1 from jsonb_array_elements(r->'messages') m where m->>'body'='Teacher explanation' and m->>'author_role'='teacher') then raise exception 'FAIL: role attribution';end if;
+ perform public.doubts_api('resolve',jsonb_build_object('id',did,'status','resolved'));
+ perform set_config('request.jwt.claim.sub',s1::text,true);
+ r:=public.doubts_api('detail',jsonb_build_object('id',did));if r->'doubt'->>'status'<>'resolved' then raise exception 'FAIL: resolve not saved';end if;
+ perform public.doubts_api('reply',jsonb_build_object('id',did,'body','A follow-up question','request_id',gen_random_uuid()));
+ r:=public.doubts_api('detail',jsonb_build_object('id',did));if r->'doubt'->>'status'<>'open' then raise exception 'FAIL: reply did not reopen';end if;
+ execute 'reset role';delete from tipix_private.academic_teacher_students where teacher_id=teacher;
+ perform set_config('request.jwt.claim.sub',teacher::text,true);execute 'set local role authenticated';
+ blocked:=false;begin perform public.doubts_api('detail',jsonb_build_object('id',did));exception when insufficient_privilege then blocked:=true;end;if not blocked then raise exception 'FAIL: revoked teacher still reads';end if;
+ execute 'reset role';update auth.users set email_confirmed_at=null where id=s1;perform set_config('request.jwt.claim.sub',s1::text,true);execute 'set local role authenticated';
+ blocked:=false;begin perform public.doubts_api('list');exception when insufficient_privilege then blocked:=true;end;if not blocked then raise exception 'FAIL: unverified user access';end if;
+ execute 'reset role';if has_function_privilege('anon','public.doubts_api(text,jsonb)','execute') then raise exception 'FAIL: anonymous grant';end if;
+end $$;
+select 'passed' as doubt_authorization_and_persistence;
+rollback;

@@ -25,6 +25,7 @@ import "./Workspace.css";
 const links = [
   ["dashboard", "Dashboard", LayoutDashboard],
   ["courses", "Courses", BookOpen],
+  ["syllabus", "Syllabus", BookOpen],
   ["practice", "Practice", PenLine],
   ["exams", "Exams", ClipboardList],
   ["submissions", "Submissions", Send],
@@ -44,7 +45,7 @@ function Shell() {
   const location = useLocation();
   const profile = useStudentProfile();
   const currentPage = links.find(([path]) => location.pathname.split("/")[2] === path)?.[1]
-    || (location.pathname.includes("settings") ? "Settings" : "Profile");
+    || (location.pathname.includes("chapters") ? "Chapter journey" : location.pathname.includes("concepts") ? "Concept tasks" : location.pathname.includes("settings") ? "Settings" : "Profile");
   const {signOut} = useAuth();
   const [signOutError, setSignOutError] = useState("");
   const [motionPaused, setMotionPaused] = useState(false);

@@ -1,7 +1,7 @@
 begin;
 -- Fixtures exist only in this transaction and are always rolled back.
 do $$
-declare u1 uuid:=gen_random_uuid();u2 uuid:=gen_random_uuid();ad uuid:=gen_random_uuid();cv uuid;cid uuid;sid uuid;q1 uuid;q2 uuid;req uuid:=gen_random_uuid();r jsonb; n integer;
+declare u1 uuid:=gen_random_uuid();u2 uuid:=gen_random_uuid();ad uuid:=gen_random_uuid();cv uuid;cid uuid;sid uuid;q1 uuid;q2 uuid;req uuid:=gen_random_uuid();r jsonb; n integer; editor_cv uuid; editor_cid uuid; blocked boolean;
 begin
  insert into auth.users(id,email,email_confirmed_at) values(u1,'academic-test-1@example.invalid',now()),(u2,'academic-test-2@example.invalid',now()),(ad,'academic-admin@example.invalid',now());
  insert into public.tipix_student_profiles(id,full_name,school_name,school_city,grade,stream) values(u1,'Student One','Test School','Test City',12,'pcm'),(u2,'Student Two','Test School','Test City',12,'pcm'),(ad,'Admin Test','Test School','Test City',12,'pcm');
@@ -15,10 +15,23 @@ begin
  q1:=(r->>'id')::uuid;perform public.academic_api('publish_question',jsonb_build_object('question_id',q1));
  r:=public.academic_api('import_question',jsonb_build_object('source_id',sid,'concept_id',cid,'question_type','mcq','question_text','Rollback fixture two','options',jsonb_build_array('A','B'),'answer',1,'source_url','https://example.invalid/q2','rights_reference','Test fixture only','license_code','test'));
  q2:=(r->>'id')::uuid;perform public.academic_api('publish_question',jsonb_build_object('question_id',q2));
+ -- Exercise the same draft -> lesson -> publish operations used by Content Studio.
+ r:=public.academic_api('create_curriculum',jsonb_build_object('board','EDITOR TEST','academic_year','2099-00','class_level',12,'subject','Physics','official_source','https://example.invalid/editor'));
+ editor_cv:=(r->>'id')::uuid;
+ r:=public.academic_api('create_concept',jsonb_build_object('curriculum_id',editor_cv,'chapter_title','Fixture chapter','concept_title','Fixture concept','subtopic','Fixture topic','position',1,'lesson','Fixture lesson','lesson_rights_reference','Rollback test authorship'));
+ editor_cid:=(r->>'id')::uuid;
+ r:=public.academic_api('admin_review');
+ if not exists(select 1 from jsonb_array_elements(r->'curricula') v where v->>'id'=editor_cv::text and v->>'status'='candidate') then raise exception 'FAIL: draft missing from editor'; end if;
+ perform public.academic_api('publish_curriculum',jsonb_build_object('curriculum_id',editor_cv));
+ blocked:=false;
+ begin perform public.academic_api('create_concept',jsonb_build_object('curriculum_id',editor_cv,'chapter_title','Unexpected','concept_title','Unexpected'));exception when raise_exception then blocked:=true;end;
+ if not blocked then raise exception 'FAIL: published curriculum mutated';end if;
  perform set_config('request.jwt.claim.sub',u1::text,true);
  begin perform public.academic_api('admin_review');raise exception 'FAIL: student accessed admin';exception when insufficient_privilege then null;end;
  begin perform * from tipix_private.academic_answer_keys;raise exception 'FAIL: answer keys readable';exception when insufficient_privilege then null;end;
  begin perform public.academic_api('review',jsonb_build_object('question_id',q1));raise exception 'FAIL: answer leaked before submission';exception when insufficient_privilege then null;end;
+ r:=public.academic_api('catalog');
+ if not exists(select 1 from jsonb_array_elements(r) c where c->>'id'=editor_cid::text) then raise exception 'FAIL: published lesson missing from student catalog';end if;
  r:=public.academic_api('next',jsonb_build_object('concept_id',cid));
  if r->'question' ? 'answer' then raise exception 'FAIL: answer key in question response';end if;
  r:=public.academic_api('submit',jsonb_build_object('question_id',q1,'request_id',req,'answer',0));
