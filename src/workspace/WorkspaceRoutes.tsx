@@ -1,7 +1,8 @@
+import LearningResume from "../academic/LearningResume";
 import ExamCenter,{ExamSummary} from "../academic/Exams";
 import DoubtsInbox from "../academic/DoubtsInbox";
 import Syllabus from "../academic/Syllabus";
-import {LearningCourses,ChapterJourney,ConceptTasks} from "../academic/LearningJourney";
+import {LearningCourses,SubjectJourney,ChapterJourney,ConceptTasks} from "../academic/LearningJourney";
 import {AcademicProvider} from "../academic/AcademicContext";
 import {AcademicDashboard, AcademicRecords, CurriculumPanel, EvidencePanel, VerifiedPractice, Readiness, SourceLibrary, ConceptRoom} from "../academic/AcademicPages";
 import StaffPages from "../academic/StaffPages";
@@ -31,10 +32,11 @@ export default function WorkspaceRoutes() {
       {" "}
       <Route element={<StudentLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
-        <Route path="dashboard" element={<><AcademicDashboard/><ExamSummary/></>} />
+        <Route path="dashboard" element={<><AcademicDashboard/><LearningResume/><ExamSummary/></>} />
         <Route path="demo/dashboard" element={<Dashboard />} />
         <Route path="syllabus" element={<Syllabus/>} />
         <Route path="courses" element={<LearningCourses/>} />
+        <Route path="subjects/:subject" element={<SubjectJourney/>} />
         <Route path="demo/courses" element={<WorkspaceCourses/>} />
         <Route path="chapters/:chapter" element={<ChapterJourney/>} />
         <Route path="courses/:courseId" element={<CourseDetail />} />
@@ -54,7 +56,7 @@ export default function WorkspaceRoutes() {
         <Route path="projects" element={<Projects />} />
         <Route path="doubts" element={<DoubtsInbox />} />
         <Route path="demo/doubts" element={<Doubts />} />
-        <Route path="profile" element={<><EvidencePanel/><ExamSummary/><Profile /></>} />
+        <Route path="profile" element={<><EvidencePanel/><LearningResume/><ExamSummary/><Profile /></>} />
         <Route path="mistakes" element={<AcademicRecords mode="mistakes" />} />
         <Route path="readiness" element={<Readiness />} />
         <Route path="sources" element={<SourceLibrary />} />

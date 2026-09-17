@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { WorkspaceProvider, useWorkspace } from "./WorkspaceContext";
 import "./Workspace.css";
+import "../academic/LearningTheme.css";
 const links = [
   ["dashboard", "Dashboard", LayoutDashboard],
   ["courses", "Courses", BookOpen],
@@ -44,8 +45,9 @@ function Shell() {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
   const profile = useStudentProfile();
+  const learningPage = /^\/app\/(courses$|subjects\/|chapters\/|concepts\/|syllabus$)/.test(location.pathname);
   const currentPage = links.find(([path]) => location.pathname.split("/")[2] === path)?.[1]
-    || (location.pathname.includes("chapters") ? "Chapter journey" : location.pathname.includes("concepts") ? "Concept tasks" : location.pathname.includes("settings") ? "Settings" : "Profile");
+    || (location.pathname.includes("subjects") ? "Subject journey" : location.pathname.includes("chapters") ? "Chapter journey" : location.pathname.includes("concepts") ? "Concept tasks" : location.pathname.includes("settings") ? "Settings" : "Profile");
   const {signOut} = useAuth();
   const [signOutError, setSignOutError] = useState("");
   const [motionPaused, setMotionPaused] = useState(false);
@@ -93,7 +95,7 @@ function Shell() {
     return () => abort.abort();
   }, [state.grade, state.stream]);
   return (
-    <div className={`workspace ${motionPaused ? "w-motion-paused" : ""}`}>
+    <div className={`workspace ${learningPage ? "learning-workspace" : ""} ${motionPaused ? "w-motion-paused" : ""}`}>
       <a href="#workspace-main" className="skip-link">
         Skip to workspace
       </a>
@@ -112,20 +114,20 @@ function Shell() {
         <div className="w-space-label">YOUR LEARNING SPACE</div>
         <nav aria-label="Student navigation">
           {links.map(([path, label, Icon]) => (
-            <NavLink key={path} to={`/app/${path}`}>
+            <NavLink key={path} title={label} aria-label={label} to={`/app/${path}`}>
               <Icon size={18} />
               <span>{label}</span>
             </NavLink>
           ))}
         </nav>
         <div className="w-sidebar-bottom">
-          <NavLink to="/app/profile">
+          <NavLink to="/app/profile" title="Profile" aria-label="Profile">
             <UserRound size={18} />
-            Profile
+            <span>Profile</span>
           </NavLink>
-          <NavLink to="/app/settings">
+          <NavLink to="/app/settings" title="Settings" aria-label="Settings">
             <Settings size={18} />
-            Settings
+            <span>Settings</span>
           </NavLink>
           <button className="w-exit w-signout" onClick={() => void signOut().catch(e=>setSignOutError(e.message))}>Sign out <ArrowUpRight size={14} /></button><p className="w-note" role="status">{signOutError}</p>
         </div>

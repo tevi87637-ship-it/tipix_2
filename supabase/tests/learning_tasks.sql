@@ -1,0 +1,37 @@
+begin;
+do $$
+declare u uuid:=gen_random_uuid();other uuid:=gen_random_uuid();cid uuid;tid uuid;checkid uuid;answer integer;r jsonb;denied boolean;sid uuid:=gen_random_uuid();qid uuid:=gen_random_uuid();
+begin
+ insert into auth.users(id,email,email_confirmed_at) values(u,'learning-fixture@example.invalid',now()),(other,'learning-other@example.invalid',now());
+ insert into public.tipix_student_profiles(id,full_name,school_name,school_city,grade,stream) values(u,'Learning Fixture','Test School','Test City',12,'pcm'),(other,'Other Fixture','Test School','Test City',8,null);
+ select t.concept_id,t.id into cid,tid from public.academic_learning_tasks t where t.position=1 and exists(select 1 from public.academic_concepts c where c.id=t.concept_id and c.chapter_title='Relations and Functions') limit 1;
+ select t.id,k.answer into checkid,answer from public.academic_learning_tasks t join tipix_private.academic_task_keys k on k.task_id=t.id where t.concept_id=cid;
+ insert into public.academic_source_registry(id,source_code,source_name,source_type,organization,base_url,rights_status,license_code,rights_reference,active) values(sid,'fixture-'||sid,'Fixture Source','open','Test','https://example.invalid','approved','test','rollback fixture',true);
+ insert into public.academic_verified_question_bank(id,concept_id,source_id,question_type,question_text,options,difficulty,source_year,source_url,license_code,rights_reference,fingerprint,is_verified,is_published,reviewed_by,reviewed_at) values(qid,cid,sid,'mcq','Rollback test only','["A","B"]',2,2024,'https://example.invalid','test','rollback fixture',qid::text,true,true,u,now());
+ insert into tipix_private.academic_answer_keys(question_id,answer,explanation) values(qid,'1','Fixture feedback');
+ perform set_config('request.jwt.claim.sub',u::text,true);execute 'set local role authenticated';
+ r:=public.learning_api('lesson',jsonb_build_object('concept_id',cid));if jsonb_array_length(r->'tasks')<>4 then raise exception 'FAIL task count';end if;
+ if r::text like '%"answer":%' then raise exception 'FAIL premature answer disclosure';end if;
+ perform public.learning_api('complete',jsonb_build_object('concept_id',cid,'task_id',tid));perform public.learning_api('complete',jsonb_build_object('concept_id',cid,'task_id',tid));
+ r:=public.learning_api('lesson',jsonb_build_object('concept_id',cid));if jsonb_array_length(r->'state'->'completed')<>1 then raise exception 'FAIL idempotent completion';end if;
+ denied:=false;begin perform public.learning_api('complete',jsonb_build_object('concept_id',cid,'task_id',checkid));exception when others then denied:=true;end;if not denied then raise exception 'FAIL completion bypass';end if;
+ r:=public.learning_api('check',jsonb_build_object('concept_id',cid,'task_id',checkid,'answer',answer));if not (r->'state'->'answers'->checkid::text->>'correct')::boolean then raise exception 'FAIL correct feedback';end if;
+ r:=public.learning_api('lesson',jsonb_build_object('concept_id',cid));if jsonb_array_length(r->'state'->'completed')<>2 then raise exception 'FAIL saved check';end if;
+ perform public.learning_api('position',jsonb_build_object('concept_id',cid,'section','pyq'));
+ r:=public.learning_api('lesson',jsonb_build_object('concept_id',cid));if r->'state'->>'section'<>'pyq' then raise exception 'FAIL section resume';end if;
+ r:=public.learning_api('next',jsonb_build_object('concept_id',cid,'filters',jsonb_build_object('source',sid,'difficulty','2','year','2024','type','mcq')));if r->'question'->>'id'<>qid::text then raise exception 'FAIL filtered question';end if;
+ if r->'question' ? 'answer' then raise exception 'FAIL answer leak';end if;
+ r:=public.learning_api('next',jsonb_build_object('concept_id',cid,'filters',jsonb_build_object('year','2023')));if r->'question'<>'null'::jsonb then raise exception 'FAIL year filter';end if;
+ perform public.learning_api('draft',jsonb_build_object('concept_id',cid,'question_id',qid,'answer',1,'filters',jsonb_build_object('year','2024')));
+ r:=public.learning_api('next',jsonb_build_object('concept_id',cid));if r->'state'->>'draft'<>'1' then raise exception 'FAIL draft resume';end if;
+ r:=public.academic_api('submit',jsonb_build_object('question_id',qid,'request_id',gen_random_uuid(),'answer',1));if not (r->'attempt'->>'correct')::boolean then raise exception 'FAIL scored answer';end if;
+ r:=public.learning_api('next',jsonb_build_object('concept_id',cid));if r->'question'<>'null'::jsonb then raise exception 'FAIL resume repeats answered question';end if;
+ denied:=false;begin perform * from tipix_private.academic_task_keys;exception when insufficient_privilege then denied:=true;end;if not denied then raise exception 'FAIL keys exposed';end if;
+ perform set_config('request.jwt.claim.sub',other::text,true);
+ r:=public.learning_api('summary');if jsonb_array_length(r)<>0 then raise exception 'FAIL cross-student state';end if;
+ denied:=false;begin perform public.learning_api('lesson',jsonb_build_object('concept_id',cid));exception when insufficient_privilege then denied:=true;end;if not denied then raise exception 'FAIL grade isolation';end if;
+ if exists(select 1 from public.academic_learning_state) then raise exception 'FAIL state RLS';end if;
+ execute 'reset role';if has_function_privilege('anon','public.learning_api(text,jsonb)','execute') then raise exception 'FAIL anonymous grant';end if;
+end $$;
+select 'passed' as learning_task_security_and_resume;
+rollback;

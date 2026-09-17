@@ -1,0 +1,5 @@
+import {useEffect,useState} from 'react';
+import {Link} from 'react-router-dom';
+import {learning,type LearningState} from './learningApi';
+import {useAcademic} from './AcademicContext';
+export default function LearningResume(){const{concepts}=useAcademic();const[state,setState]=useState<LearningState[]>([]);useEffect(()=>{let live=true;learning<LearningState[]>('summary').then(s=>{if(live)setState(s)}).catch(()=>{});return()=>{live=false}},[]);const recent=state.filter(s=>concepts.some(c=>c.id===s.concept_id)).slice(0,3);if(!recent.length)return null;return <section className="w-panel"><span className="w-eyebrow">YOUR SAVED LEARNING PATH</span><h2>Continue learning</h2>{recent.map(s=><Link className="ai-row" to={`/app/concepts/${s.concept_id}`} key={s.concept_id}><div><strong>{concepts.find(c=>c.id===s.concept_id)?.concept_title}</strong><p>{s.completed.length} lesson tasks completed · resume your saved position</p></div><span>Continue →</span></Link>)}<p className="w-note">Lesson activity is saved separately from server-scored practice mastery.</p></section>}
