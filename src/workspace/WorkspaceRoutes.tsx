@@ -1,3 +1,4 @@
+import ExamCenter,{ExamSummary} from "../academic/Exams";
 import DoubtsInbox from "../academic/DoubtsInbox";
 import Syllabus from "../academic/Syllabus";
 import {LearningCourses,ChapterJourney,ConceptTasks} from "../academic/LearningJourney";
@@ -30,7 +31,7 @@ export default function WorkspaceRoutes() {
       {" "}
       <Route element={<StudentLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
-        <Route path="dashboard" element={<AcademicDashboard />} />
+        <Route path="dashboard" element={<><AcademicDashboard/><ExamSummary/></>} />
         <Route path="demo/dashboard" element={<Dashboard />} />
         <Route path="syllabus" element={<Syllabus/>} />
         <Route path="courses" element={<LearningCourses/>} />
@@ -41,7 +42,8 @@ export default function WorkspaceRoutes() {
         <Route path="demo/practice" element={<Practice />} />
         <Route path="demo/practice/:courseId" element={<Practice />} />
         <Route path="practice/:courseId" element={<VerifiedPractice />} />
-        <Route path="exams" element={<Exams />} />
+        <Route path="exams" element={<ExamCenter />} />
+        <Route path="demo/exams" element={<Exams />} />
         <Route path="submissions" element={<AcademicRecords mode="submissions" />} />
         <Route path="demo/submissions" element={<Submissions />} />
         <Route path="concept-progress" element={<AcademicRecords mode="concept-progress" />} />
@@ -52,7 +54,7 @@ export default function WorkspaceRoutes() {
         <Route path="projects" element={<Projects />} />
         <Route path="doubts" element={<DoubtsInbox />} />
         <Route path="demo/doubts" element={<Doubts />} />
-        <Route path="profile" element={<><EvidencePanel/><Profile /></>} />
+        <Route path="profile" element={<><EvidencePanel/><ExamSummary/><Profile /></>} />
         <Route path="mistakes" element={<AcademicRecords mode="mistakes" />} />
         <Route path="readiness" element={<Readiness />} />
         <Route path="sources" element={<SourceLibrary />} />

@@ -21,10 +21,14 @@ Academic tests also passed, including draft/lesson/publication, published versio
 
 Production currently has one published curriculum version, six concepts and zero rights-approved scored questions. The three source-linked NCERT exercises are unscored. No teacher/admin accounts are provisioned. Provisioning requires the intended registered staff email and class/student assignments; never choose an account by guesswork.
 
-Full 6–12 lesson/question coverage, licensed PYQ imports, secure production exams with release rules, Judge0 execution, full school/class administration, readiness modelling, parent access, source synchronization and load testing remain incomplete. Existing demonstration pages are not production implementations of those features.
+Full 6–12 lesson/question coverage, licensed PYQ imports, multi-concept/proctored exams and exam-to-mastery integration, Judge0 execution, full school/class administration, readiness modelling, parent access, source synchronization and load testing remain incomplete. Existing demonstration pages are not production implementations of those features.
 
 The syllabus URLs were checked against https://cbseacademic.nic.in/curriculum_2027.html and https://ncert.nic.in/textbook.php on 16 September 2026. They are external references. Curriculum and content publication is a separate reviewed workflow.
 
 Authenticated desktop/mobile browser QA has not been completed. Production builds passed, with pre-existing large-bundle warnings.
 
 The security advisor reports INFO notices for intentionally RPC-only tables with deny-all RLS, and an existing warning that leaked-password protection is disabled. Configure it in Supabase Auth when available: https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection . No password settings were silently changed.
+
+## Exam update
+
+Server-scored assigned exams with autosave, deadlines and result-release controls are now implemented; see EXAMS.md for precise scope and validation.
