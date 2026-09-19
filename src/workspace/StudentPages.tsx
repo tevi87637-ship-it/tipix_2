@@ -1,3 +1,4 @@
+import {useAcademic} from '../academic/AcademicContext';
 import { useAuth, useStudentProfile } from "../auth/AuthProvider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -627,7 +628,8 @@ export function Leaderboard() {
 export function Profile() {
   const profile = useStudentProfile();
   const {user} = useAuth();
-  const { state, courses, attempts, points } = useWorkspace();
+  const {overview,concepts} = useAcademic();
+  const courses=Array.from(new Map(concepts.map(c=>[`${c.subject}::${c.academic_year}`,c])).values());
   return (
     <>
       <PageHeading
@@ -639,19 +641,19 @@ export function Profile() {
         <section className="w-panel w-profile-card">
           <div className="w-profile-avatar">{profile.full_name.charAt(0).toUpperCase()}</div>
           <h2>{profile.full_name}</h2><p>{user?.email}</p><p>{profile.school_name} · {profile.school_city}</p>
-          <p>Class {state.grade}</p>
+          <p>Class {profile.grade}</p>
           <span className="w-tag">Email verified · Student</span>
           <div className="w-profile-stats">
             <div>
-              <strong>{attempts.length}</strong>
+              <strong>{overview?.totals.attempted??'—'}</strong>
               <span>Attempts</span>
             </div>
             <div>
-              <strong>{points}</strong>
+              <strong>{overview?.totals.points??'—'}</strong>
               <span>Points</span>
             </div>
           </div>
-          <p className="w-note">Activity figures below are local demonstration results.</p>
+          <p className="w-note">Statistics use the same saved practice attempts as Dashboard and Leaderboard.</p>
         </section>
         <section className="w-panel">
           <h2>Your course selection</h2>
@@ -659,13 +661,13 @@ export function Profile() {
             Your saved account grade determines these courses.
           </p>
           {courses.map((c) => (
-            <Link key={c.id} to={`/app/courses/${c.id}`} className="w-next-row">
+            <Link key={c.id} to={`/app/subjects/${encodeURIComponent(c.subject+'::'+c.academic_year)}`} className="w-next-row">
               <span>
-                <CourseIcon id={c.id} size={20} />
+                <BookOpen size={20} />
               </span>
               <div>
-                <h3>{c.name}</h3>
-                <p>Class {state.grade} concept sampler</p>
+                <h3>{c.subject}</h3>
+                <p>Class {profile.grade} published learning path</p>
               </div>
               <ChevronRight size={16} />
             </Link>
