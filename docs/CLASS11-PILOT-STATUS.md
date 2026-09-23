@@ -16,7 +16,7 @@ After explicit user approval, `supabase/migrations/20260919122511_class11_concep
 
 The migration adds stream metadata and topic relationships, inserts only the Class 11 pilot, and updates academic/learning RPCs while retaining account, grade/stream and role checks. The approved publication constraint permits this explicitly identified original seed without inventing a human reviewer. Normal imported questions continue to require an actual reviewer. No student was promoted to staff and no authentication configuration was changed.
 
-Frontend changes remain in the draft PR, not the deployed Site. Authenticated browser integration verification is still required before declaring the pilot complete.
+See CLASS11-IMPLEMENTATION-STATUS.md for the subsequent Physics draft and shared-practice release. Authenticated browser integration verification is still required before declaring the pilot complete.
 
 ## Verification evidence and limits
 

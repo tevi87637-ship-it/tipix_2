@@ -1,0 +1,390 @@
+{
+  "class_number": 11,
+  "subject": "Physics",
+  "book": "Physics Part I",
+  "book_part": "I",
+  "academic_year": "2026-27",
+  "chapter_number": 2,
+  "chapter": "Motion in a Straight Line",
+  "official_source_url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+  "official_structure_checked_at": "2026-09-23",
+  "verification_status": "pending",
+  "copyright_note": "Original TIPIX lessons and questions; NCERT is a curriculum reference only.",
+  "concepts": [
+    {
+      "title": "Position and displacement",
+      "topic": "Introduction",
+      "goals": "Choose a signed axis; distinguish position, distance and displacement; calculate a change in position.",
+      "simple": "Position locates an object relative to a chosen origin. Displacement compares the finish with the start, without counting the route between them.",
+      "detail": "Choose a positive direction before calculating. A coordinate is a location, not a distance travelled. Break a journey into legs to find distance; compare only its endpoints to find displacement. On a line, the sign communicates direction.",
+      "ideas": "Distance cannot be negative. Displacement may be positive, negative or zero. A return journey can have a nonzero distance and zero displacement.",
+      "formula": "Δx = x_final − x_initial; distance = sum of the absolute lengths of each leg.",
+      "units": "Position x and displacement Δx: metres (m). State the positive direction alongside a signed answer.",
+      "example": "A delivery robot starts at x = −3 m, visits x = 9 m and stops at x = 4 m. Displacement = 4 − (−3) = +7 m. Distance = |9 − (−3)| + |4 − 9| = 12 + 5 = 17 m.",
+      "real": "A batter who runs to the other crease and back covers ground but finishes at the starting position: the net displacement is zero.",
+      "mistakes": "Adding every leg gives distance, not displacement. A negative starting coordinate must be subtracted with brackets. Negative displacement does not mean negative distance.",
+      "tip": "Write the endpoints first. Check that |displacement| ≤ distance. Equality requires no reversal along the line.",
+      "summary": "Choose origin and direction → record endpoints → subtract final minus initial → give metres and direction.",
+      "check": "A robot returns to its starting coordinate. Which quantity must be zero?",
+      "options": [
+        "Distance travelled",
+        "Displacement",
+        "Time taken"
+      ],
+      "answer": 1,
+      "why": "Its final and initial coordinates match, so their difference is zero. It may still have travelled.",
+      "questions": [
+        {
+          "text": "A trolley moves from x = −4 m to x = 7 m. Enter its displacement in metres.",
+          "answer": 11,
+          "solution": "7 − (−4) = +11 m. Subtract the starting coordinate, including its sign.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A runner moves 14 m east, then 6 m west. Taking east as positive, enter displacement in metres.",
+          "answer": 8,
+          "solution": "The signed changes add: +14 − 6 = +8 m. The 20 m path length is not displacement.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A cart starts at x = 8 m and finishes at x = −5 m. Enter displacement in metres.",
+          "answer": -13,
+          "solution": "Final minus initial is −5 − 8 = −13 m, towards the negative direction.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A robot moves from x = 2 m to x = 12 m and then to x = −1 m. Enter total distance in metres.",
+          "answer": 23,
+          "solution": "The two leg lengths are |12 − 2| = 10 m and |−1 − 12| = 13 m. Distance is 23 m.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A walker starts at x = −6 m, travels to x = 9 m, then returns to x = −6 m. Enter net displacement in metres.",
+          "answer": 0,
+          "solution": "The endpoints are equal. Net displacement is −6 − (−6) = 0 m, although distance is 30 m.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A robot travels only east and west. It covers 38 m total and finishes 10 m east of its start. How many metres did it travel west?",
+          "answer": 14,
+          "solution": "Let E and W be eastward and westward distances. E + W = 38 and E − W = 10. Subtracting gives 2W = 28, so W = 14 m.",
+          "difficulty": 3,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        }
+      ],
+      "verification_status": "pending",
+      "source_reference": "TIPIX instructional classification; official chapter reference checked, concept granularity awaits review."
+    },
+    {
+      "title": "Instantaneous velocity and speed",
+      "topic": "Instantaneous velocity and speed",
+      "goals": "Relate velocity to the slope of a position–time graph; calculate instantaneous velocity; distinguish speed from signed velocity.",
+      "simple": "Velocity describes how position is changing at a particular moment. Speed describes the magnitude of that change without its direction.",
+      "detail": "Average velocity compares two times. Instantaneous velocity examines a shrinking interval around one time. On a smooth position–time graph it is the tangent slope. If a formula x(t) is supplied, differentiate it with respect to time.",
+      "ideas": "A horizontal tangent means zero instantaneous velocity. A negative slope means motion towards decreasing x. Equal speed does not imply equal velocity.",
+      "formula": "v_average = Δx/Δt; v(t) = dx/dt; instantaneous speed = |v(t)|.",
+      "units": "Time t: seconds (s); position x: metres (m); velocity and speed: metres per second (m/s).",
+      "example": "For x(t) = 2t² − 6t + 1 metres, v(t) = 4t − 6 m/s. At t = 1 s, v = −2 m/s and speed = 2 m/s. At t = 1.5 s the tangent is horizontal.",
+      "real": "A game character can run left at 5 m/s or right at 5 m/s. The speed is unchanged but the signed velocity reverses.",
+      "mistakes": "Do not use x/t as instantaneous velocity. Do not report a negative speed. Average speed uses total distance, not net displacement.",
+      "tip": "Differentiate first, then substitute the requested time. Inspect units of every coefficient.",
+      "summary": "Position–time tangent slope gives velocity; take its absolute value to obtain speed.",
+      "check": "The position–time tangent slope is −3 m/s. What is the speed?",
+      "options": [
+        "−3 m/s",
+        "0 m/s",
+        "3 m/s"
+      ],
+      "answer": 2,
+      "why": "Speed is the magnitude of velocity, so |−3| = 3 m/s.",
+      "questions": [
+        {
+          "text": "An object has instantaneous velocity −9 m/s. Enter its speed in m/s.",
+          "answer": 9,
+          "solution": "Speed is |velocity| = |−9| = 9 m/s.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        },
+        {
+          "text": "For x(t) = 5t + 2 metres, enter the instantaneous velocity in m/s.",
+          "answer": 5,
+          "solution": "Differentiating x with respect to t gives the constant velocity 5 m/s.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        },
+        {
+          "text": "For x(t) = 3t² − 2t metres, find velocity at t = 2 s in m/s.",
+          "answer": 10,
+          "solution": "v(t) = 6t − 2. At 2 s this is 12 − 2 = 10 m/s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        },
+        {
+          "text": "For x(t) = t³ − 6t metres, enter velocity at t = 1 s in m/s.",
+          "answer": -3,
+          "solution": "v(t) = 3t² − 6. At t = 1 s it equals −3 m/s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        },
+        {
+          "text": "For x(t) = 2t² − 8t metres, at what time in seconds is instantaneous velocity zero?",
+          "answer": 2,
+          "solution": "v = 4t − 8. Solving 4t − 8 = 0 gives t = 2 s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        },
+        {
+          "text": "For x(t) = t³ − 3t² metres, enter the instantaneous speed at t = 1 s in m/s.",
+          "answer": 3,
+          "solution": "v = 3t² − 6t = −3 m/s at t = 1 s. Speed is the magnitude, 3 m/s.",
+          "difficulty": 3,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Differentiate before substituting time."
+        }
+      ],
+      "verification_status": "pending",
+      "source_reference": "TIPIX instructional classification; official chapter reference checked, concept granularity awaits review."
+    },
+    {
+      "title": "Acceleration",
+      "topic": "Acceleration",
+      "goals": "Calculate average and instantaneous acceleration; distinguish negative acceleration from slowing down.",
+      "simple": "Acceleration measures how quickly velocity changes. It can change the speed, the direction, or both.",
+      "detail": "On a line, compare signed velocities. Acceleration with the same sign as velocity increases speed; opposite signs decrease speed until any reversal. A velocity–time graph has acceleration as its slope.",
+      "ideas": "An object can have zero velocity at one instant and nonzero acceleration. Constant velocity implies zero acceleration; constant acceleration allows velocity to change uniformly.",
+      "formula": "a_average = (v_final − v_initial)/Δt; a(t) = dv/dt = d²x/dt².",
+      "units": "Acceleration: metres per second squared (m/s²). A value +2 m/s² means velocity increases by 2 m/s each second.",
+      "example": "A cart changes velocity from −8 to −2 m/s in 3 s. Average acceleration = [−2 − (−8)]/3 = +2 m/s². It is slowing down because its speed falls from 8 to 2 m/s.",
+      "real": "A lift accelerating upwards while descending can reduce its downward speed. The direction of motion and acceleration need not match.",
+      "mistakes": "Negative acceleration does not always mean slowing down. Use signed velocities and the time interval, not the clock reading.",
+      "tip": "For a speed-change question, compare the signs of v and a. At a turning instant, examine times just before and after it.",
+      "summary": "Velocity change divided by elapsed time gives average acceleration. Graph slope or differentiation gives instantaneous acceleration.",
+      "check": "Velocity is negative and acceleration is positive, before any reversal. What happens to speed?",
+      "options": [
+        "It decreases",
+        "It increases",
+        "It must remain constant"
+      ],
+      "answer": 0,
+      "why": "Acceleration opposes the current velocity, so the magnitude of velocity decreases.",
+      "questions": [
+        {
+          "text": "Velocity changes from 3 to 15 m/s in 4 s. Enter average acceleration in m/s².",
+          "answer": 3,
+          "solution": "(15 − 3)/4 = 3 m/s².",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A vehicle maintains velocity −7 m/s for 6 s. Enter its acceleration in m/s².",
+          "answer": 0,
+          "solution": "There is no change in velocity, so acceleration is zero.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "Velocity changes from −10 to −4 m/s in 2 s. Enter average acceleration in m/s².",
+          "answer": 3,
+          "solution": "[−4 − (−10)]/2 = +3 m/s². The vehicle is slowing while moving in the negative direction.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "For v(t) = 4t² − 3 m/s, enter acceleration at t = 2 s in m/s².",
+          "answer": 16,
+          "solution": "a(t) = dv/dt = 8t. At 2 s, a = 16 m/s².",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A ball moving at +6 m/s changes to −2 m/s in 4 s. Enter average acceleration in m/s².",
+          "answer": -2,
+          "solution": "The signed velocity change is −2 − 6 = −8 m/s. Dividing by 4 s gives −2 m/s².",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "For x(t) = 2t³ − 5t² + 4t metres, enter acceleration at t = 3 s in m/s².",
+          "answer": 26,
+          "solution": "Differentiate twice: v = 6t² − 10t + 4; a = 12t − 10. At t = 3 s, a = 26 m/s².",
+          "difficulty": 3,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        }
+      ],
+      "verification_status": "pending",
+      "source_reference": "TIPIX instructional classification; official chapter reference checked, concept granularity awaits review."
+    },
+    {
+      "title": "Constant-acceleration equations",
+      "topic": "Kinematic equations for uniformly accelerated motion",
+      "goals": "Choose an equation from known quantities; use signed displacement; check the constant-acceleration assumption.",
+      "simple": "When acceleration stays constant, a small set of equations connects the starting velocity, finishing velocity, displacement and elapsed time.",
+      "detail": "Let the initial instant be t = 0. Use one consistent positive direction. The area beneath the straight velocity–time line gives signed displacement. These equations cannot be applied as one interval when acceleration changes partway through.",
+      "ideas": "The symbol s is displacement, not always total distance. Free-fall problems use a signed gravitational acceleration. More than one time can correspond to the same position.",
+      "formula": "v = u + at; s = ut + ½at²; v² = u² + 2as; s = ½(u + v)t. All require constant a.",
+      "units": "u, v: m/s; a: m/s²; s: m; t: s. Convert km/h to m/s before substitution.",
+      "example": "A cart starts at 2 m/s and accelerates at 3 m/s² for 4 s. Final velocity = 2 + 3×4 = 14 m/s. Displacement = 2×4 + ½×3×4² = 32 m. The average velocity 8 m/s also gives 32 m in 4 s.",
+      "real": "A straight velocity–time segment in a train simulation can be modelled with constant acceleration; a curved segment requires a different approach.",
+      "mistakes": "Do not forget the square on time or the factor one-half. Do not use constant-acceleration equations for a variable acceleration. A squared velocity equation cannot by itself determine direction.",
+      "tip": "List u, v, a, s and t. Select an equation without the unwanted unknown. Verify physical time is nonnegative.",
+      "summary": "Check constant acceleration → choose a positive axis → select an equation → substitute SI units → check the result.",
+      "check": "Which condition is required for s = ut + ½at² with a single value of a?",
+      "options": [
+        "Zero initial velocity",
+        "Constant acceleration throughout the interval",
+        "Positive velocity throughout"
+      ],
+      "answer": 1,
+      "why": "The equation assumes a constant acceleration; u can be nonzero and velocity can change sign.",
+      "questions": [
+        {
+          "text": "A cart starts from rest with acceleration 2 m/s² for 5 s. Enter its final velocity in m/s.",
+          "answer": 10,
+          "solution": "v = u + at = 0 + 2×5 = 10 m/s.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A car moves with constant acceleration from 4 to 10 m/s in 3 s. Enter acceleration in m/s².",
+          "answer": 2,
+          "solution": "a = (v − u)/t = (10 − 4)/3 = 2 m/s².",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A cart starts at 3 m/s and accelerates at 2 m/s² for 4 s. Enter displacement in metres.",
+          "answer": 28,
+          "solution": "s = ut + ½at² = 3×4 + ½×2×16 = 28 m.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A vehicle moving at 12 m/s brakes at constant acceleration −3 m/s². Enter its stopping distance in metres.",
+          "answer": 24,
+          "solution": "At rest v = 0. From v² = u² + 2as: 0 = 144 − 6s, so s = 24 m.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A ball is thrown vertically upward at 20 m/s. Use g = 10 m/s². Enter time to its highest point in seconds.",
+          "answer": 2,
+          "solution": "Up is positive, so a = −10 m/s² and v = 0 at the top. 0 = 20 − 10t gives t = 2 s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A cart starts with velocity +6 m/s and constant acceleration −2 m/s² for 5 s. Enter its TOTAL DISTANCE travelled in metres.",
+          "answer": 13,
+          "solution": "It stops after 3 s, having travelled 6×3 − 3² = 9 m. During the remaining 2 s it travels ½×2×2² = 4 m backwards. Total distance is 13 m, although displacement is 5 m.",
+          "difficulty": 3,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        }
+      ],
+      "verification_status": "pending",
+      "source_reference": "TIPIX instructional classification; official chapter reference checked, concept granularity awaits review."
+    },
+    {
+      "title": "Relative velocity on a line",
+      "topic": "Relative velocity",
+      "goals": "Express one object’s velocity as observed from another; calculate closing and separation rates.",
+      "simple": "Relative velocity answers how fast the separation changes when one moving object is used as the reference.",
+      "detail": "First express both velocities on the same axis relative to the ground. Subtract the observer’s velocity from the object’s velocity. Do not blindly add speeds: the algebra already handles opposite directions.",
+      "ideas": "Equal velocities produce zero relative velocity. Reversing observer and object changes the sign. A negative relative velocity means motion in the observer’s negative direction.",
+      "formula": "v_A/B = v_A − v_B; for constant velocities, relative displacement = initial separation + v_A/B × t.",
+      "units": "All velocities must use the same unit, normally m/s. Separations use metres and encounter times use seconds.",
+      "example": "A bus moves east at 16 m/s and a cyclist east at 6 m/s. The cyclist sees the bus move east at 16 − 6 = 10 m/s. If they move towards one another at these speeds, the closing speed is 22 m/s.",
+      "real": "In a racing game, two cars moving at equal velocity keep the same gap even though both move rapidly relative to the track.",
+      "mistakes": "Do not confuse v_A/B with v_B/A. Do not add speeds for objects moving in the same direction. State which object is the observer.",
+      "tip": "Draw one axis, attach signs to both ground velocities, then subtract. Check whether the calculated separation grows or shrinks.",
+      "summary": "Choose observer B → express both signed ground velocities → compute v_A − v_B → interpret the sign.",
+      "check": "Two cars move east with equal velocities. What is one car’s velocity relative to the other?",
+      "options": [
+        "Twice the ground velocity",
+        "Zero",
+        "The negative ground velocity"
+      ],
+      "answer": 1,
+      "why": "Subtracting equal velocities gives zero, so their separation stays constant.",
+      "questions": [
+        {
+          "text": "A moves east at 13 m/s and B east at 5 m/s. Taking east as positive, enter velocity of A relative to B in m/s.",
+          "answer": 8,
+          "solution": "v_A/B = 13 − 5 = +8 m/s.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "Two trains travel east at 11 m/s each. Enter their relative velocity in m/s.",
+          "answer": 0,
+          "solution": "Their equal ground velocities subtract to zero.",
+          "difficulty": 1,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A moves east at 8 m/s and B west at 4 m/s. Taking east as positive, enter velocity of A relative to B in m/s.",
+          "answer": 12,
+          "solution": "v_A = +8 and v_B = −4. Thus v_A/B = 8 − (−4) = +12 m/s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A cyclist moves at +4 m/s and a bus at +15 m/s. Enter the cyclist’s velocity relative to the bus in m/s.",
+          "answer": -11,
+          "solution": "v_cyclist/bus = 4 − 15 = −11 m/s, backwards relative to the bus.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "Two carts are 90 m apart and approach each other at constant speeds 7 and 3 m/s. Enter time to meet in seconds.",
+          "answer": 9,
+          "solution": "The closing speed is 7 + 3 = 10 m/s. Time = 90/10 = 9 s.",
+          "difficulty": 2,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        },
+        {
+          "text": "A car is 120 m behind a bus. Both travel east at constant speeds 22 and 14 m/s respectively. Enter the time for the car to catch the bus in seconds.",
+          "answer": 15,
+          "solution": "The gap shrinks at 22 − 14 = 8 m/s. Time = 120/8 = 15 s. Using the sum would incorrectly assume opposite directions.",
+          "difficulty": 3,
+          "type": "numerical",
+          "hint": "Identify the relevant quantities and use the formula from this concept. Keep signs consistent."
+        }
+      ],
+      "verification_status": "pending",
+      "source_reference": "TIPIX instructional classification; official chapter reference checked, concept granularity awaits review."
+    }
+  ]
+}
