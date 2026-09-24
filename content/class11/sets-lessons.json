@@ -1,0 +1,295 @@
+[
+  {
+    "title": "Roster and set-builder forms",
+    "goal": "Describe exactly which objects belong to a set and translate between a list and a defining rule.",
+    "simple": "A set collects distinct, well-defined objects. Roster form lists its elements inside braces. Set-builder form gives a rule that decides membership. A clear rule must let two people agree whether an object belongs.",
+    "detail": "Order and repetition do not change a set. The rosters {2,4,6}, {6,2,4} and {2,2,4,6} describe the same set. In set-builder notation, specify the domain: integers, real numbers or another set. Without a domain, a rule may describe a different collection.",
+    "formula": "A = {2,4,6,8} = {x ∈ ℕ : x is even and 2 ≤ x ≤ 8}. The symbol ∈ means belongs to; ∉ means does not belong to.",
+    "worked": "A game unlocks levels numbered 1 to 10. The even-numbered levels below 9 are 2, 4, 6 and 8. First state the domain, then apply both conditions. The roster is {2,4,6,8}; it contains four elements.",
+    "real": "Think of a playlist filter: songs with a duration below three minutes. The filter is a membership rule; the list of matching songs is its roster. A subjective rule such as “great songs” is not well-defined without a fixed criterion.",
+    "mistakes": "Do not include the boundary 10 when the condition is less than 10. Do not count a repeated element twice. Always specify whether x is an integer or a real number.",
+    "checks": [
+      {
+        "prompt": "Which roster represents {x ∈ ℕ : 2 < x ≤ 5}?",
+        "options": [
+          "{2,3,4,5}",
+          "{3,4,5}",
+          "{3,4}"
+        ],
+        "answer": 1,
+        "explanation": "The strict lower bound excludes 2, and the inclusive upper bound includes 5."
+      },
+      {
+        "prompt": "How many elements are in {1,1,2,3,3}?",
+        "options": [
+          "5",
+          "4",
+          "3"
+        ],
+        "answer": 2,
+        "explanation": "Only distinct elements count: 1, 2 and 3."
+      },
+      {
+        "prompt": "Which rule defines {3,6,9}?",
+        "options": [
+          "Positive multiples of 3 not exceeding 9",
+          "All multiples of 3",
+          "Positive integers below 9"
+        ],
+        "answer": 0,
+        "explanation": "The finite upper bound and positive condition select exactly 3, 6 and 9."
+      }
+    ]
+  },
+  {
+    "title": "Empty finite and infinite sets",
+    "goal": "Distinguish an empty collection from a collection containing zero; decide whether a set has finitely many elements.",
+    "simple": "An empty set contains no elements. A finite set has a fixed nonnegative integer number of elements. An infinite set cannot be exhausted by listing only finitely many distinct elements.",
+    "detail": "The empty set is itself finite: its size is zero. The set {0} is not empty because zero is one element. A set can be bounded and still infinite: every real number between 0 and 1 belongs to (0,1), and there are infinitely many such numbers.",
+    "formula": "∅ = {}. |∅| = 0, but |{0}| = 1. The natural numbers ℕ form an infinite set.",
+    "worked": "Let A be the integers satisfying 4 < x < 5. No integer fits, so A = ∅. Let B be the real numbers satisfying 4 < x < 5. Numbers such as 4.1, 4.01 and 4.001 fit, and B is infinite. Changing the domain changes the result.",
+    "real": "A classroom attendance list is finite. The list of absent students may be empty on a day when everyone attends. An endless counting process 1, 2, 3, … models an infinite set.",
+    "mistakes": "Do not write {∅} when you mean ∅: the first contains one element, the empty set. Do not assume an interval is finite because its endpoints are finite.",
+    "checks": [
+      {
+        "prompt": "How many elements does {∅} contain?",
+        "options": [
+          "0",
+          "1",
+          "Infinitely many"
+        ],
+        "answer": 1,
+        "explanation": "Its only element is the empty set. A container holding an empty container is not empty."
+      },
+      {
+        "prompt": "Which set is empty?",
+        "options": [
+          "{0}",
+          "{x ∈ ℤ : 2 < x < 3}",
+          "{x ∈ ℝ : 2 < x < 3}"
+        ],
+        "answer": 1,
+        "explanation": "There is no integer strictly between 2 and 3. There are many real numbers there."
+      },
+      {
+        "prompt": "The real numbers in [0,1] form which kind of set?",
+        "options": [
+          "Finite",
+          "Empty",
+          "Infinite"
+        ],
+        "answer": 2,
+        "explanation": "A bounded interval still contains infinitely many real numbers."
+      }
+    ]
+  },
+  {
+    "title": "Equal sets and subsets",
+    "goal": "Use membership to test equality and inclusion, and distinguish an element from a subset.",
+    "simple": "Two sets are equal when they have exactly the same elements. A is a subset of B when every element of A also belongs to B. Equality requires inclusion in both directions.",
+    "detail": "A proper subset omits at least one element of the larger set. Every set is a subset of itself, and the empty set is a subset of every set. The symbols ∈ and ⊆ answer different questions: one tests element membership, the other tests inclusion of an entire collection.",
+    "formula": "A ⊆ B means every x ∈ A also satisfies x ∈ B. A = B precisely when A ⊆ B and B ⊆ A.",
+    "worked": "For A={1,3} and B={1,2,3}, both elements of A appear in B, so A ⊆ B. Since 2 belongs to B but not A, A ≠ B. The set {3,1} equals A because ordering is irrelevant.",
+    "real": "Every student in a school chess team is a student in the school. The team roster is a subset of the school roster, but the team and school need not have the same roster.",
+    "mistakes": "A set with two elements need not equal another set with two elements. Also, 1 ∈ {1,2} is true, while {1} ⊆ {1,2} is the corresponding subset statement.",
+    "checks": [
+      {
+        "prompt": "For A={2,5}, which set equals A?",
+        "options": [
+          "{5,2,2}",
+          "{2,5,7}",
+          "{2}"
+        ],
+        "answer": 0,
+        "explanation": "Repetition and order do not alter the distinct elements."
+      },
+      {
+        "prompt": "Which is always a subset of a set A?",
+        "options": [
+          "Every singleton",
+          "The empty set",
+          "The natural numbers"
+        ],
+        "answer": 1,
+        "explanation": "The empty set has no element that could violate inclusion."
+      },
+      {
+        "prompt": "If A ⊆ B and B ⊆ A, then:",
+        "options": [
+          "A and B are disjoint",
+          "A = B",
+          "A must be empty"
+        ],
+        "answer": 1,
+        "explanation": "Both inclusions guarantee exactly the same elements."
+      }
+    ]
+  },
+  {
+    "title": "Intervals and universal set",
+    "goal": "Interpret interval endpoints and specify the universe in which a set operation is performed.",
+    "simple": "An interval describes a continuous range of real numbers. Square brackets include an endpoint; round brackets exclude it. A universal set U is the collection currently under discussion.",
+    "detail": "The interval [a,b) includes a, excludes b and contains every real number between them. Infinity is not a real endpoint, so an infinite endpoint always uses a round bracket. The same subset can have different complements when U changes.",
+    "formula": "[a,b] = {x ∈ ℝ : a ≤ x ≤ b}; (a,b) = {x ∈ ℝ : a < x < b}; [a,∞) = {x ∈ ℝ : x ≥ a}.",
+    "worked": "The condition −2 ≤ x < 3 gives [−2,3). The number −2 is included, 3 is excluded, and 0.5 is included. If the domain were integers instead, the matching set would be {−2,−1,0,1,2}.",
+    "real": "A sensor’s acceptable temperature range can include its minimum and exclude its maximum. The interval notation records these decisions without listing infinitely many possible readings.",
+    "mistakes": "Do not treat an interval as a list of integers. Do not include ∞ using a square bracket. State U before finding a complement.",
+    "checks": [
+      {
+        "prompt": "Which interval describes 1 < x ≤ 4?",
+        "options": [
+          "[1,4)",
+          "(1,4]",
+          "[1,4]"
+        ],
+        "answer": 1,
+        "explanation": "The lower bound is strict and the upper bound is inclusive."
+      },
+      {
+        "prompt": "Does [2,5) contain 5?",
+        "options": [
+          "Yes",
+          "No"
+        ],
+        "answer": 1,
+        "explanation": "A round bracket excludes that endpoint."
+      },
+      {
+        "prompt": "Which notation correctly expresses x ≥ 0 over the reals?",
+        "options": [
+          "[0,∞]",
+          "(0,∞)",
+          "[0,∞)"
+        ],
+        "answer": 2,
+        "explanation": "Zero is included; infinity is not a real number or an included endpoint."
+      }
+    ]
+  },
+  {
+    "title": "Set difference",
+    "goal": "Find the elements that belong to one set but not another, and recognise that order matters.",
+    "simple": "The difference A \\ B keeps elements of A that do not belong to B. Begin with the first set and remove its overlap with the second. This is not numerical subtraction.",
+    "detail": "If A and B share no elements, A \\ B equals A. If A is contained in B, A \\ B is empty. Swapping the order usually changes the answer, so A \\ B and B \\ A must be computed separately.",
+    "formula": "A \\ B = {x : x ∈ A and x ∉ B}. Within a universe U, A \\ B = A ∩ Bᶜ.",
+    "worked": "Let A={1,2,4,7} and B={2,3,7}. Remove 2 and 7 from A to get A \\ B={1,4}. For B \\ A, begin with B and remove 2 and 7 to get {3}. The two results are different.",
+    "real": "A list of students who submitted homework minus a list of students who submitted it late gives the students whose submissions were on time, provided the late list uses the same assignment and class.",
+    "mistakes": "Do not include elements that appear only in B when calculating A \\ B. Do not subtract the sizes of A and B unless B is contained in A.",
+    "checks": [
+      {
+        "prompt": "If A={1,2,3} and B={2,4}, what is A \\ B?",
+        "options": [
+          "{1,3}",
+          "{4}",
+          "{1,3,4}"
+        ],
+        "answer": 0,
+        "explanation": "Keep only elements of A outside B: 1 and 3."
+      },
+      {
+        "prompt": "For any A, A \\ A equals:",
+        "options": [
+          "A",
+          "∅",
+          "{0}"
+        ],
+        "answer": 1,
+        "explanation": "Every element is removed because each belongs to the second set."
+      },
+      {
+        "prompt": "If A ⊆ B, what is A \\ B?",
+        "options": [
+          "B",
+          "A",
+          "∅"
+        ],
+        "answer": 2,
+        "explanation": "There is no element of A outside B."
+      }
+    ]
+  },
+  {
+    "title": "Complement and De Morgan's laws",
+    "goal": "Find complements relative to a universe and translate “not or” and “not and” correctly.",
+    "simple": "The complement of A consists of the elements in U that are not in A. De Morgan’s laws describe how taking a complement changes a union into an intersection, and an intersection into a union.",
+    "detail": "To be outside A ∪ B, an element must be outside both A and B. To be outside A ∩ B, it only needs to fail membership in at least one of the two sets. These are different conditions.",
+    "formula": "Aᶜ = U \\ A; (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ; (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ.",
+    "worked": "With U={1,2,3,4,5}, A={1,2} and B={2,3}, the union is {1,2,3}, so its complement is {4,5}. Separately Aᶜ={3,4,5} and Bᶜ={1,4,5}; their intersection is again {4,5}.",
+    "real": "In a class, students in neither the music club nor the art club are outside the union. Students not in both clubs form a larger set: they may be in one club or in neither.",
+    "mistakes": "A complement is undefined until the universe is fixed. “Not both” does not mean “neither”. When complementing a union, change the operation as well as complementing the sets.",
+    "checks": [
+      {
+        "prompt": "If U={1,2,3,4} and A={1,4}, what is Aᶜ?",
+        "options": [
+          "{1,4}",
+          "{2,3}",
+          "∅"
+        ],
+        "answer": 1,
+        "explanation": "The universe elements missing from A are 2 and 3."
+      },
+      {
+        "prompt": "Which equals (A ∪ B)ᶜ?",
+        "options": [
+          "Aᶜ ∪ Bᶜ",
+          "A ∩ B",
+          "Aᶜ ∩ Bᶜ"
+        ],
+        "answer": 2,
+        "explanation": "Outside the union means outside both sets."
+      },
+      {
+        "prompt": "Within the same universe, (Aᶜ)ᶜ equals:",
+        "options": [
+          "A",
+          "U",
+          "∅"
+        ],
+        "answer": 0,
+        "explanation": "Complementing twice restores exactly the original membership."
+      }
+    ]
+  },
+  {
+    "title": "Venn diagrams and counting",
+    "goal": "Translate a two-set diagram into counts without counting the overlap twice.",
+    "simple": "A Venn diagram divides a universe into membership regions. With two sets, distinguish A only, both, B only and neither. An element belongs to exactly one of these regions.",
+    "detail": "Adding the sizes of A and B counts every shared element twice. Subtracting the intersection once corrects this. A diagram is a representation of membership, not necessarily an area-proportional drawing.",
+    "formula": "|A ∪ B| = |A| + |B| − |A ∩ B|. A-only count = |A| − |A ∩ B|. Neither count = |U| − |A ∪ B|.",
+    "worked": "In a class of 30, 18 students like chess, 14 like badminton and 6 like both. At least one: 18+14−6=26. Chess only: 18−6=12. Badminton only: 14−6=8. Neither: 30−26=4. Check: 12+6+8+4=30.",
+    "real": "Use the four regions to organise preferences in a school survey. The “both” region must be identified before the exclusive counts can be calculated.",
+    "mistakes": "Do not add the overlap after adding both set sizes. “Exactly one” excludes the intersection, whereas “at least one” includes it.",
+    "checks": [
+      {
+        "prompt": "If |A|=9, |B|=8 and |A ∩ B|=3, what is |A ∪ B|?",
+        "options": [
+          "20",
+          "14",
+          "17"
+        ],
+        "answer": 1,
+        "explanation": "9+8 counts the shared 3 twice, so subtract 3 once: 14."
+      },
+      {
+        "prompt": "If 12 like science and 5 like both science and art, how many like science only?",
+        "options": [
+          "17",
+          "12",
+          "7"
+        ],
+        "answer": 2,
+        "explanation": "Remove the 5 shared students from the 12 science students."
+      },
+      {
+        "prompt": "If the universe has 25 elements and the union has 19, how many are in neither set?",
+        "options": [
+          "6",
+          "19",
+          "44"
+        ],
+        "answer": 0,
+        "explanation": "Neither is the complement of the union: 25−19=6."
+      }
+    ]
+  }
+]
