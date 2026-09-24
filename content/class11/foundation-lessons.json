@@ -1,0 +1,982 @@
+[
+  {
+    "subject": "Biology",
+    "chapter": "The Living World",
+    "title": "Characteristics of living organisms",
+    "goal": "Distinguish living systems from things that merely move or increase in size. Explain why no single visible feature is sufficient.",
+    "explain": "Living organisms have organised cells whose chemical reactions maintain the system. They exchange materials and energy with their surroundings, respond to conditions and belong to lineages capable of reproduction and evolution. A dormant seed may show little outward activity while remaining alive.",
+    "ideas": "Growth increases size or cell number. Reproduction produces new organisms, but a sterile individual is still alive. Metabolism is the interconnected set of chemical reactions in a living system. Response to stimuli includes a shoot bending toward light; it does not require a brain.",
+    "rules": "Evaluate a combination of cellular organisation, metabolism and regulated responses. Growth alone is not decisive: a crystal can grow by deposition. Reproduction alone excludes sterile organisms and therefore cannot define every living individual.",
+    "example": "Compare a crystal, a germinating seed and a moving toy. The crystal enlarges by external deposition. The seed uses stored nutrients, carries out metabolism and makes new cells. The toy moves because supplied electrical energy drives a motor, without a self-maintaining cellular system. The seed is living; movement or growth alone does not settle the other cases.",
+    "mistakes": "Do not classify a mule as non-living because it is usually sterile. Do not equate consciousness here with human self-awareness. A reaction performed by extracted enzymes is evidence of biological chemistry, not proof that the test tube is an organism.",
+    "summary": "Use several linked characteristics. Cellular organisation and coordinated metabolism explain why living growth differs from simple accumulation.",
+    "checks": [
+      {
+        "prompt": "Which observation best distinguishes a growing seedling from a growing salt crystal?",
+        "options": [
+          "Both become larger",
+          "The seedling forms cells through coordinated metabolism",
+          "Only the crystal contains matter"
+        ],
+        "answer": 1,
+        "explanation": "Both can increase in size. A seedling builds and maintains cellular structures through metabolism; crystal growth occurs by deposition."
+      },
+      {
+        "prompt": "A healthy sterile animal is classified as:",
+        "options": [
+          "Non-living because it cannot reproduce",
+          "Living despite inability to reproduce",
+          "Living only while moving"
+        ],
+        "answer": 1,
+        "explanation": "Reproduction is characteristic of biological lineages, but not a necessary ability of every living individual. Cellular metabolism and organisation remain present."
+      }
+    ],
+    "visual": "living"
+  },
+  {
+    "subject": "Biology",
+    "chapter": "The Living World",
+    "title": "Biodiversity and nomenclature",
+    "goal": "Explain why organisms need shared scientific names and apply binomial naming conventions.",
+    "explain": "Biodiversity is the variety of living forms, including variation within species and the diversity of species and ecosystems. Common names vary between regions and languages. Scientific nomenclature provides standardised names so different people can refer to the same organism.",
+    "ideas": "Identification asks which organism you have. Nomenclature supplies its accepted name. Classification places it in groups. These related activities are not interchangeable. A binomial combines a genus name and a specific epithet.",
+    "rules": "Write the genus with an initial capital and the specific epithet in lower case; italicise both when printed. Underline the two words separately when handwritten. An author citation, when used, is not part of the two-word italicised name.",
+    "example": "Consider Mangifera indica. Mangifera is the genus and indica is the specific epithet. Writing only indica does not uniquely identify a species because the same epithet can be used in another genus. Local names for mango can differ while the scientific binomial connects the records.",
+    "mistakes": "Do not capitalise both words. Do not call the specific epithet alone the full species name. Standard naming is governed by relevant codes; it is not permission to invent a new name for a familiar organism.",
+    "summary": "A standard scientific name links biological information across languages. Its two words have different taxonomic roles.",
+    "checks": [
+      {
+        "prompt": "Which binomial uses the correct capitalisation?",
+        "options": [
+          "mangifera Indica",
+          "Mangifera Indica",
+          "Mangifera indica"
+        ],
+        "answer": 2,
+        "explanation": "The genus starts with a capital letter, while the specific epithet is lower case. In print both words should also be italicised."
+      },
+      {
+        "prompt": "What is the principal benefit of scientific nomenclature?",
+        "options": [
+          "Every organism has only one local name",
+          "Researchers can use a standard name across languages",
+          "Classification becomes unnecessary"
+        ],
+        "answer": 1,
+        "explanation": "Standard names reduce the ambiguity of local names. Identification and classification are still needed."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Biology",
+    "chapter": "The Living World",
+    "title": "Taxonomic categories",
+    "goal": "Distinguish a taxonomic rank from a named group, and use shared characters to classify organisms.",
+    "explain": "Taxonomy involves characterising, identifying, naming and classifying organisms. Categories such as genus and family are ranks in a hierarchy. A taxon is an actual group placed at a rank, such as the genus Panthera or the family Felidae.",
+    "ideas": "Rank describes a level; taxon identifies a group. A family may contain multiple genera and a genus may contain multiple species. Classification uses meaningful biological similarities and relationships, not a single convenient feature such as colour.",
+    "rules": "Category: genus. Example taxon at that category: Panthera. Category: family. Example taxon at that category: Felidae. Broader groups include progressively more organisms, usually sharing fewer specific characters.",
+    "example": "A lion and a tiger are distinct species within Panthera. Panthera is a taxon at genus rank. Both also belong to Felidae, a broader family that includes other cat genera. The nested memberships do not make the lion and tiger the same species.",
+    "mistakes": "A category is not a particular organism. Do not assume organisms in the same family must share a genus. Taxonomic classifications can be revised when new evidence becomes available.",
+    "summary": "Ranks organise groups. Named taxa occupy those ranks, and biological evidence informs their boundaries.",
+    "checks": [
+      {
+        "prompt": "Which is a rank rather than a named taxon?",
+        "options": [
+          "Panthera",
+          "Felidae",
+          "Family"
+        ],
+        "answer": 2,
+        "explanation": "Family is the rank or category. Felidae is a particular taxon at that rank, and Panthera is a genus."
+      },
+      {
+        "prompt": "Two organisms belonging to the same family must belong to the same:",
+        "options": [
+          "Species",
+          "Genus",
+          "Order"
+        ],
+        "answer": 2,
+        "explanation": "Family is nested within order. One family can contain multiple genera and many species."
+      }
+    ],
+    "visual": "taxonomy"
+  },
+  {
+    "subject": "Biology",
+    "chapter": "The Living World",
+    "title": "Species to kingdom hierarchy",
+    "goal": "Arrange the principal ranks and infer shared membership without overclaiming relatedness.",
+    "explain": "A taxonomic hierarchy places smaller groups inside larger groups. At this school-level sequence, species is the most specific listed rank and kingdom the broadest. Related species are grouped into genera, genera into families, and so on.",
+    "ideas": "Species → genus → family → order → class → phylum (division is often used for plants) → kingdom. Organisms sharing a genus share the broader ranks in that classification. Sharing a kingdom does not imply sharing a genus.",
+    "rules": "In the biological species concept, members of natural populations can interbreed and are reproductively isolated from other such groups. This definition has limitations for fossils, asexual organisms and some other cases; species identification uses additional evidence.",
+    "example": "Humans are placed in Homo sapiens, genus Homo, family Hominidae, order Primates, class Mammalia, phylum Chordata and kingdom Animalia in the familiar school classification. A domestic cat also belongs to Mammalia, but not to Primates: sharing a class does not force agreement at the narrower order rank.",
+    "mistakes": "Do not reverse order and family. Do not conclude two organisms are the same species because they look similar. A hierarchy is a classification framework, not a scale of superior and inferior organisms.",
+    "summary": "Move upward to broader groups and downward to more specific groups. A shared narrow rank implies shared broader ranks, not the reverse.",
+    "checks": [
+      {
+        "prompt": "Which sequence goes from narrower to broader?",
+        "options": [
+          "Genus → species → family",
+          "Species → genus → family",
+          "Family → species → genus"
+        ],
+        "answer": 1,
+        "explanation": "Species are grouped into genera, and genera into families."
+      },
+      {
+        "prompt": "Two species share a genus. In the same classification, they must share a:",
+        "options": [
+          "Family",
+          "Specific epithet",
+          "Population"
+        ],
+        "answer": 0,
+        "explanation": "A genus belongs within a family. Distinct species do not need the same epithet or belong to the same population."
+      }
+    ],
+    "visual": "taxonomy"
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "SI base and derived units",
+    "goal": "Name the seven SI base units and build derived units from physical definitions.",
+    "explain": "A measurement combines a numerical value with a unit. SI uses seven base quantities: length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity. Their units are metre, kilogram, second, ampere, kelvin, mole and candela.",
+    "ideas": "Derived quantities combine base quantities. Speed compares distance with time; force connects mass and acceleration. A named derived unit is shorthand for a combination of base units, not an extra base quantity.",
+    "rules": "Speed: m s⁻¹. Acceleration: m s⁻². Force: newton, N = kg m s⁻². Energy: joule, J = kg m² s⁻². Pressure: pascal, Pa = kg m⁻¹ s⁻². Kelvin has no degree sign.",
+    "example": "A 2 kg object accelerates at 3 m s⁻². From F = ma, F = 6 kg m s⁻² = 6 N. Notice that multiplying the numerical values and multiplying the units are both necessary.",
+    "mistakes": "Kilogram, not gram, is the SI base unit of mass. The unit symbol for second is s, not sec. Unit symbols do not acquire plural endings: 5 kg, not 5 kgs.",
+    "summary": "Begin with the physical definition, then combine units algebraically. A value without an appropriate unit can be incomplete.",
+    "checks": [
+      {
+        "prompt": "Which is an SI base unit?",
+        "options": [
+          "Newton",
+          "Kilogram",
+          "Joule"
+        ],
+        "answer": 1,
+        "explanation": "Kilogram is the base unit of mass. Newton and joule are derived units."
+      },
+      {
+        "prompt": "The SI base-unit expression for force is:",
+        "options": [
+          "kg m s⁻²",
+          "kg m² s⁻²",
+          "m s⁻¹"
+        ],
+        "answer": 0,
+        "explanation": "Force equals mass times acceleration. Multiplying kg by m s⁻² gives kg m s⁻²."
+      }
+    ],
+    "visual": "units"
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "Unit conversion",
+    "goal": "Convert measurements using factors equal to one, including squared and cubed units.",
+    "explain": "Changing units changes the numerical value but not the physical quantity. Multiply by ratios of equal quantities so unwanted units cancel. Prefixes represent powers of ten: kilo is 10³, centi is 10⁻² and milli is 10⁻³.",
+    "ideas": "A conversion factor such as 1000 m / 1 km equals one. For area and volume, raise the complete conversion factor to the same power as the unit. This prevents a common error of treating square centimetres as centimetres.",
+    "rules": "1 km = 1000 m; 1 h = 3600 s. Thus 1 km h⁻¹ = 5/18 m s⁻¹. Since 1 cm = 10⁻² m, 1 cm² = 10⁻⁴ m² and 1 cm³ = 10⁻⁶ m³.",
+    "example": "Convert 72 km h⁻¹: 72 × 1000/3600 = 20 m s⁻¹. Convert 250 cm²: 250 × 10⁻⁴ = 0.025 m². The second calculation squares the length factor; it does not merely divide by 100.",
+    "mistakes": "Never convert only the numerator of a compound unit. Check whether units represent length, area or volume before choosing a factor. A smaller unit gives a larger numerical value for the same length.",
+    "summary": "Write the units during conversion. Correct cancellation is a practical check on which factor goes on top.",
+    "checks": [
+      {
+        "prompt": "36 km h⁻¹ equals:",
+        "options": [
+          "10 m s⁻¹",
+          "36 m s⁻¹",
+          "129.6 m s⁻¹"
+        ],
+        "answer": 0,
+        "explanation": "36 × 1000/3600 = 10. Kilometres become metres and hours become seconds."
+      },
+      {
+        "prompt": "1 cm² equals:",
+        "options": [
+          "10⁻² m²",
+          "10⁻⁴ m²",
+          "10² m²"
+        ],
+        "answer": 1,
+        "explanation": "Square both sides of 1 cm = 10⁻² m. The conversion factor is (10⁻²)² = 10⁻⁴."
+      }
+    ],
+    "visual": "units"
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "Significant figures",
+    "goal": "Count significant figures and communicate the precision of a measurement.",
+    "explain": "Significant figures describe the meaningful digits reported for a measured value. Leading zeros locate the decimal point; they do not measure extra precision. Zeros between nonzero digits count, and trailing zeros after a decimal point can communicate precision.",
+    "ideas": "0.00450 has three significant figures: 4, 5 and the final 0. The initial zeros only place the digits. 1002 has four. A number such as 1500 without further notation is ambiguous about trailing-zero significance; scientific notation makes the intention clearer.",
+    "rules": "1.50 × 10³ has three significant figures. 1.500 × 10³ has four. Exact counts and defined conversions do not limit precision in the same way as measured inputs. Keep guard digits until the final result.",
+    "example": "A balance reads 2.30 g. Reporting 2.3 g loses the stated hundredth-gram resolution. Reporting 2.30000 g suggests unsupported precision. In contrast, counting exactly 12 identical objects does not introduce a two-significant-figure measurement limit.",
+    "mistakes": "Do not count every zero. Do not delete a trailing decimal zero that records instrument precision. More printed digits do not make an inaccurate instrument more accurate.",
+    "summary": "Significant figures describe reported precision, not automatically accuracy. Scientific notation avoids ambiguity.",
+    "checks": [
+      {
+        "prompt": "How many significant figures are in 0.00620?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ],
+        "answer": 1,
+        "explanation": "Leading zeros do not count. The digits 6, 2 and the trailing decimal zero count: three."
+      },
+      {
+        "prompt": "Which states 1500 to three significant figures unambiguously?",
+        "options": [
+          "1.50 × 10³",
+          "1.5 × 10³",
+          "1500 without context"
+        ],
+        "answer": 0,
+        "explanation": "The coefficient 1.50 explicitly retains three significant figures."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "Rounding measured results",
+    "goal": "Choose decimal-place or significant-figure rules according to the operation.",
+    "explain": "A calculated result should not imply greater precision than the measurements justify. Addition and subtraction are limited by decimal-place precision. Multiplication and division are limited by the fewest significant figures among measured inputs.",
+    "ideas": "Carry extra digits through intermediate calculations, then round the final answer. The rounding rule and the physical uncertainty are related but not identical; rigorous uncertainty propagation needs more information than just the written digits.",
+    "rules": "For addition/subtraction, match the least precise decimal place. For multiplication/division, match the least number of significant figures. When the first discarded digit is exactly 5 with no later nonzero digits, the round-to-even convention chooses an even retained digit.",
+    "example": "12.1 + 0.34 = 12.44, reported as 12.4 because 12.1 is given to one decimal place. For 2.4 × 3.22 = 7.728, report 7.7 to two significant figures. With round-to-even, 2.450 to two significant figures becomes 2.4.",
+    "mistakes": "Do not apply the multiplication rule to addition. Avoid rounding every intermediate step. Distinguish a tie such as 2.450 from 2.451, whose discarded digits make it greater than the halfway point.",
+    "summary": "Choose the rule by the operation; retain guard digits and round once at the end.",
+    "checks": [
+      {
+        "prompt": "Report 4.2 + 0.36 using measurement precision.",
+        "options": [
+          "4.56",
+          "4.6",
+          "5"
+        ],
+        "answer": 1,
+        "explanation": "Addition uses decimal places. 4.2 has one decimal place, so 4.56 becomes 4.6."
+      },
+      {
+        "prompt": "Report 2.0 × 3.14 with appropriate significant figures.",
+        "options": [
+          "6.28",
+          "6.3",
+          "6"
+        ],
+        "answer": 1,
+        "explanation": "The limiting input has two significant figures. 6.28 rounds to 6.3."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "Dimensional formulae",
+    "goal": "Express physical quantities in mass, length and time dimensions and distinguish dimensions from units.",
+    "explain": "Dimensions describe the kind of physical quantity, independent of the chosen measurement unit. The symbols M, L and T represent mass, length and time dimensions. Metres and centimetres have the same dimension L.",
+    "ideas": "Derive dimensions from defining equations. Velocity is displacement divided by time, acceleration is velocity change divided by time, and force is mass times acceleration. Quantities with identical dimensions need not have the same physical meaning.",
+    "rules": "[v] = L T⁻¹; [a] = L T⁻²; [F] = M L T⁻²; [energy] = M L² T⁻²; [pressure] = M L⁻¹ T⁻²; [density] = M L⁻³. Pure ratios of like quantities are dimensionless.",
+    "example": "Pressure P = F/A. Divide M L T⁻² by L² to obtain M L⁻¹ T⁻². In SI this corresponds to kg m⁻¹ s⁻². The dimensional formula has no numerical factor and does not state the pressure value.",
+    "mistakes": "Do not write kg inside a dimensional formula using M, L, T. Do not assume equal dimensions mean equal quantities: work and torque share dimensions but represent different physical ideas.",
+    "summary": "Use definitions to derive dimensions. Keep dimensions, units and numerical values distinct.",
+    "checks": [
+      {
+        "prompt": "The dimensions of density are:",
+        "options": [
+          "M L³",
+          "M L⁻³",
+          "M L⁻²"
+        ],
+        "answer": 1,
+        "explanation": "Density is mass divided by volume. Its dimensions are M/L³ = M L⁻³."
+      },
+      {
+        "prompt": "Which pair has the same dimensions?",
+        "options": [
+          "Energy and force",
+          "Work and torque",
+          "Pressure and momentum"
+        ],
+        "answer": 1,
+        "explanation": "Work and torque both have dimensions of force times length, M L² T⁻², although their physical meanings differ."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "title": "Dimensional analysis and limitations",
+    "goal": "Test dimensional consistency and explain what the test cannot establish.",
+    "explain": "A valid physical equation must be dimensionally homogeneous: terms that are added must have the same dimensions. Dimensional analysis can reveal an impossible equation or suggest powers in a relationship, but it is not a full proof.",
+    "ideas": "Pure numbers such as 2 and π have no dimensions. Dimensional analysis cannot determine them. It also cannot decide the form of an arbitrary dimensionless function or distinguish quantities that share dimensions. Arguments of exponential, logarithmic and trigonometric functions must be dimensionless in physical formulas.",
+    "rules": "For s = ut + (1/2)at², both right-hand terms have dimension L. In s = ut + at, the second term has dimension L T⁻¹, so the sum is inconsistent. A dimensionally consistent formula can still have an incorrect numerical factor.",
+    "example": "Assume pendulum period τ is proportional to lᵃgᵇ, independent of other quantities. T = Lᵃ(L T⁻²)ᵇ gives −2b = 1 and a+b = 0, so b = −1/2, a = 1/2. Thus τ is proportional to √(l/g). The factor 2π and the small-angle condition require physics beyond dimensions.",
+    "mistakes": "Do not claim a formula is correct merely because dimensions agree. State assumptions: omitted physical variables can matter. Dimensional analysis alone cannot derive addition of separate terms.",
+    "summary": "Dimensional consistency is necessary, not sufficient. It is a powerful filter and a guide to scaling.",
+    "checks": [
+      {
+        "prompt": "Which expression has the dimensions of length?",
+        "options": [
+          "at",
+          "at²",
+          "a/t"
+        ],
+        "answer": 1,
+        "explanation": "Acceleration has dimensions L T⁻². Multiplication by t² yields L."
+      },
+      {
+        "prompt": "Dimensional analysis alone cannot determine:",
+        "options": [
+          "Whether terms can be added",
+          "The numerical factor 2π",
+          "The dimensions of force"
+        ],
+        "answer": 1,
+        "explanation": "Pure numerical factors are dimensionless and are invisible to dimensional comparisons."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Elements compounds and mixtures",
+    "goal": "Classify matter by composition and distinguish physical separation from chemical change.",
+    "explain": "An element contains atoms with one atomic number. A compound contains elements chemically combined in a definite ratio. A mixture contains substances together without a single fixed composition for the whole mixture.",
+    "ideas": "A pure substance has characteristic composition. A homogeneous mixture is uniform at the scale considered, such as a well-mixed salt solution. A heterogeneous mixture has distinguishable regions, such as sand in water. Homogeneous does not necessarily mean pure.",
+    "rules": "Chemical reactions can decompose suitable compounds into simpler substances. Physical methods separate mixture components by properties such as boiling point, solubility or particle size. An ordinary chemical reaction cannot split an element into different elements.",
+    "example": "Compare iron, water and salt water. Iron is an element. Pure water is a compound with hydrogen and oxygen in a fixed atom ratio of 2:1. Salt water is a mixture: different amounts of salt can dissolve. Evaporation separates water from dissolved salt, whereas decomposing water requires a chemical process.",
+    "mistakes": "Do not call air a compound merely because it appears uniform. Do not change the identity of water by varying how much of it you have. O₂ is an elemental substance even though its particles are molecules.",
+    "summary": "Ask whether composition is fixed and whether the components are chemically combined. Appearance alone is insufficient.",
+    "checks": [
+      {
+        "prompt": "A uniform solution of sugar in water is a:",
+        "options": [
+          "Compound",
+          "Homogeneous mixture",
+          "Element"
+        ],
+        "answer": 1,
+        "explanation": "The sugar-to-water ratio can vary, and the components can be separated physically. Uniformity makes it homogeneous."
+      },
+      {
+        "prompt": "Which sample is an elemental substance?",
+        "options": [
+          "O₂",
+          "CO₂",
+          "Salt solution"
+        ],
+        "answer": 0,
+        "explanation": "O₂ contains only oxygen atoms. CO₂ contains two elements chemically combined; salt solution is a mixture."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Physical quantities and significant figures",
+    "goal": "Use units and scientific notation correctly in chemical measurements.",
+    "explain": "Chemical calculations connect measurable quantities such as mass, volume and temperature. A measurement includes both a number and a unit. Scientific notation expresses very large or small values without hiding which digits are significant.",
+    "ideas": "Mass is measured in kilograms in SI, amount in moles and temperature in kelvin. Chemists commonly use grams and litres alongside SI. Precision describes repeatability or resolution, while accuracy concerns agreement with a reference value.",
+    "rules": "1 L = 10⁻³ m³; 1 mL = 1 cm³. T(K) = t(°C) + 273.15. In products and quotients, measured significant figures limit the result; in sums and differences, decimal-place precision limits it.",
+    "example": "A solution occupies 25.0 mL. This is 0.0250 L or 2.50 × 10⁻⁵ m³, retaining three significant figures. A temperature of 25.00 °C corresponds to 298.15 K; the Celsius-to-kelvin offset is exact, not a measured uncertainty.",
+    "mistakes": "Do not confuse mass with amount of substance. Do not replace kelvin with degrees Celsius in formulas requiring absolute temperature. Leading zeros are not significant digits.",
+    "summary": "Track units, scale and precision together. Use scientific notation when zeros might be ambiguous.",
+    "checks": [
+      {
+        "prompt": "25.0 mL in litres is:",
+        "options": [
+          "0.0250 L",
+          "0.250 L",
+          "25 000 L"
+        ],
+        "answer": 0,
+        "explanation": "There are 1000 mL in one litre. Dividing by 1000 gives 0.0250 L with three significant figures."
+      },
+      {
+        "prompt": "0.00340 has how many significant figures?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ],
+        "answer": 1,
+        "explanation": "3, 4 and the final decimal zero are significant. The leading zeros only locate the decimal point."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Laws of chemical combination",
+    "goal": "Apply conservation of mass, definite proportions and multiple proportions to chemical evidence.",
+    "explain": "In an ordinary chemical reaction in a closed system, total mass is conserved. A given pure compound has its elements in a definite mass ratio. When two elements form more than one compound, the masses of one that combine with a fixed mass of the other can be in simple whole-number ratios.",
+    "ideas": "The laws refer to chemical combinations, not arbitrary mixtures. For gases, reacting volumes measured at the same temperature and pressure may be in simple ratios. Avogadro’s law states that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules in the ideal-gas description.",
+    "rules": "Mass of reactants = mass of products in a closed system. For multiple proportions, first fix the mass of one element, then compare masses of the other. Temperature and pressure must be matched before comparing gas volumes.",
+    "example": "Suppose one carbon oxide contains 12 g carbon with 16 g oxygen and another contains 12 g carbon with 32 g oxygen. With carbon held fixed, oxygen masses are 16:32 = 1:2. This illustrates multiple proportions, not a changing composition of one pure compound.",
+    "mistakes": "Gas escaping from an open flask can reduce the measured flask mass without violating conservation. Do not compare mass ratios before fixing the same amount of one element.",
+    "summary": "Conservation and simple composition ratios provided evidence for a particulate description of matter.",
+    "checks": [
+      {
+        "prompt": "In a closed reaction, 4 g and 12 g of reactants form one product. Its mass is:",
+        "options": [
+          "8 g",
+          "16 g",
+          "48 g"
+        ],
+        "answer": 1,
+        "explanation": "Conservation of mass gives 4 + 12 = 16 g, assuming all reactants form the stated product."
+      },
+      {
+        "prompt": "16 g and 32 g oxygen combine separately with 12 g carbon. Their ratio is:",
+        "options": [
+          "1:2",
+          "2:1",
+          "3:4"
+        ],
+        "answer": 0,
+        "explanation": "Fix carbon at 12 g, then compare oxygen: 16/32 = 1/2."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Dalton's atomic theory",
+    "goal": "Connect Dalton’s proposals to chemical laws and recognise their modern limitations.",
+    "explain": "Dalton proposed that matter consists of atoms, that compounds form through simple combinations of atoms, and that chemical reactions rearrange atoms. These ideas explain why chemical combinations have definite proportions and why ordinary chemical reactions conserve atoms.",
+    "ideas": "The historical model treated atoms of one element as identical in mass and atoms as indivisible. Modern evidence shows subatomic particles and isotopes. Isotopes have the same atomic number but different masses, so the historical identical-mass claim is not universally valid.",
+    "rules": "For ordinary chemical equations, conserve the number of atoms of each element. Do not treat the historical atomic model as a complete account of nuclear reactions, atomic structure or isotope variation.",
+    "example": "For 2H₂ + O₂ → 2H₂O, count four hydrogen atoms and two oxygen atoms on each side. No atoms need to be created or destroyed; their bonding changes. Chlorine isotopes illustrate why atoms of a single element need not all have identical masses.",
+    "mistakes": "Do not say modern chemistry rejects every part of Dalton’s theory. Its rearrangement idea remains useful for ordinary reactions, while indivisibility and identical mass need qualification.",
+    "summary": "Atomic theory explains chemical combination, but scientific models are refined when new evidence appears.",
+    "checks": [
+      {
+        "prompt": "Which discovery directly challenges identical masses for all atoms of an element?",
+        "options": [
+          "Isotopes",
+          "Definite proportions",
+          "A balanced equation"
+        ],
+        "answer": 0,
+        "explanation": "Isotopes of the same element have different neutron numbers and therefore different masses."
+      },
+      {
+        "prompt": "An ordinary chemical reaction primarily:",
+        "options": [
+          "Rearranges atoms",
+          "Creates the missing atoms",
+          "Changes every nucleus"
+        ],
+        "answer": 0,
+        "explanation": "Chemical reactions rearrange atoms and bonds. Nuclear transformations are a different type of process."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Atomic and molecular masses",
+    "goal": "Calculate formula mass from relative atomic masses and distinguish mass per particle from molar mass.",
+    "explain": "The atomic mass unit u is one twelfth of the mass of a carbon-12 atom. Tabulated atomic masses commonly represent isotope-weighted averages. Molecular mass is found by summing atomic masses according to the molecular formula. For ionic substances, formula mass is the appropriate term.",
+    "ideas": "Relative atomic or molecular mass is a ratio and has no unit. A particle mass may be expressed in u. Molar mass is mass per mole, usually g mol⁻¹ in school calculations. The numerical values are related, but the quantities are different.",
+    "rules": "Using H = 1, C = 12 and O = 16 for the following examples: molecular mass of H₂O = 2(1)+16 = 18 u; molar mass ≈ 18 g mol⁻¹. Always use the atomic masses supplied in a problem.",
+    "example": "Calculate CO₂: one carbon contributes 12 u and two oxygen atoms contribute 2 × 16 = 32 u. Total = 44 u per molecule. One mole of CO₂ has an approximate mass of 44 g with these rounded masses. For NaCl, use formula units rather than isolated NaCl molecules in the solid.",
+    "mistakes": "Do not confuse 44 u with 44 g for a single molecule. Do not overlook subscripts. Average atomic mass need not be an integer.",
+    "summary": "Read the formula, multiply each atomic mass by its count, then add. State whether you mean particle mass, relative mass or molar mass.",
+    "checks": [
+      {
+        "prompt": "Using C = 12 and H = 1, the molecular mass of CH₄ is:",
+        "options": [
+          "13 u",
+          "16 u",
+          "48 u"
+        ],
+        "answer": 1,
+        "explanation": "CH₄ contains one carbon and four hydrogen atoms: 12 + 4 × 1 = 16 u."
+      },
+      {
+        "prompt": "Why can a tabulated atomic mass be non-integral?",
+        "options": [
+          "It may be an isotope-weighted average",
+          "An atom contains a fraction of a proton",
+          "All isotopes have identical mass"
+        ],
+        "answer": 0,
+        "explanation": "Natural samples can contain isotopes in different proportions, producing a weighted mean mass."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Mole concept and molar mass",
+    "goal": "Move between mass, amount of substance and number of specified particles.",
+    "explain": "A mole contains exactly 6.02214076 × 10²³ specified entities. The entities may be atoms, molecules, ions or formula units, so always name what is being counted. Molar mass links a measurable sample mass to its amount in moles.",
+    "ideas": "Counting moles is analogous to counting dozens, but the number per group is much larger. A mole of oxygen atoms and a mole of oxygen molecules contain the same number of entities but are different quantities of oxygen atoms.",
+    "rules": "n = m/M and N = nNₐ. Here n is amount in mol, m is mass in g when M is in g mol⁻¹, and N is particle count. Use the given molar mass; for the water example take M = 18 g mol⁻¹.",
+    "example": "For 9.0 g water, n = 9.0/18 = 0.50 mol H₂O. Molecules = 0.50Nₐ. Each molecule has two H atoms, so the sample contains 1.0 mol H atoms and 0.50 mol O atoms. The number of molecules is not the total number of atoms.",
+    "mistakes": "Do not multiply by molar mass when converting grams to moles. Do not use 22.4 L for every gas condition; molar gas volume depends on temperature, pressure and the gas model.",
+    "summary": "Mass → divide by molar mass → moles → multiply by Avogadro constant → particles.",
+    "checks": [
+      {
+        "prompt": "Using M(H₂O) = 18 g mol⁻¹, 36 g water contains:",
+        "options": [
+          "0.5 mol H₂O",
+          "2 mol H₂O",
+          "18 mol H₂O"
+        ],
+        "answer": 1,
+        "explanation": "Divide the sample mass by the mass of one mole: n = m/M = 36/18 = 2 mol of water molecules."
+      },
+      {
+        "prompt": "One mole of CO₂ molecules contains how many moles of oxygen atoms?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ],
+        "answer": 1,
+        "explanation": "Each CO₂ molecule has two oxygen atoms, so one mole of molecules contains two moles of oxygen atoms."
+      }
+    ],
+    "visual": "mole"
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Percentage composition",
+    "goal": "Find the mass percentage of an element and check that all percentages sum to approximately 100.",
+    "explain": "Mass percentage tells how much of a compound’s mass comes from each element. It is not the percentage of atoms. Calculate each element’s contribution to one mole of the compound, then divide by the total molar mass.",
+    "ideas": "Subscripts give atom counts, while relative atomic masses determine mass contributions. Hydrogen can account for many atoms but a small fraction of mass because hydrogen atoms are light. Rounding can make reported percentages sum to slightly more or less than 100.",
+    "rules": "Mass % of element = (mass of that element in one mole of compound / molar mass of compound) × 100. Use all atoms of the element indicated by the formula.",
+    "example": "In water using H = 1 and O = 16, total molar mass is 18. Hydrogen contributes 2, so H mass % = 2/18 × 100 ≈ 11.1%. Oxygen contributes 16, so O mass % ≈ 88.9%. The H atom fraction is 2/3, which is not its mass fraction.",
+    "mistakes": "Do not use atom ratio directly as mass ratio. Do not omit repeated atoms. Percentages of a mixture need its actual composition; a chemical formula describes a pure compound.",
+    "summary": "Compute contributions, divide by the total, multiply by 100, then check the sum.",
+    "checks": [
+      {
+        "prompt": "Using C = 12 and O = 16, oxygen mass % in CO₂ is closest to:",
+        "options": [
+          "27.3%",
+          "50%",
+          "72.7%"
+        ],
+        "answer": 2,
+        "explanation": "Oxygen contributes 32 of the total 44 g per mole. 32/44 × 100 ≈ 72.7%."
+      },
+      {
+        "prompt": "In H₂O, the hydrogen atom percentage and mass percentage are:",
+        "options": [
+          "Always equal",
+          "Different",
+          "Both 50%"
+        ],
+        "answer": 1,
+        "explanation": "The counts weight atoms equally; mass percentage weights them by atomic mass. Hydrogen is much lighter than oxygen."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Empirical and molecular formulae",
+    "goal": "Derive the simplest whole-number ratio and use molar mass to find a molecular formula.",
+    "explain": "An empirical formula gives the simplest whole-number ratio of atoms. A molecular formula gives actual atom counts in a molecule. The molecular formula is an integer multiple of the empirical formula, but mass percentages alone usually cannot determine that multiplier.",
+    "ideas": "For percentage data, imagine a 100 g sample. Convert each element’s mass to moles using its atomic mass. Divide by the smallest mole value, then multiply all ratios if needed to obtain near-integers. Do not round a clear 1.5 ratio down to 1.",
+    "rules": "Multiplier = molecular molar mass / empirical-formula molar mass. For reliable data, it should be close to a positive integer. Multiply every empirical subscript by that integer.",
+    "example": "A sample is 40.0% C, 6.7% H and 53.3% O. In 100 g, moles are approximately 3.33, 6.7 and 3.33. Divide by 3.33 to get 1:2:1, so empirical formula CH₂O, mass 30 g mol⁻¹. If molecular molar mass is 180, multiplier = 6 and molecular formula C₆H₁₂O₆.",
+    "mistakes": "Never divide mass percentages directly to infer atom ratios when atomic masses differ. A formula for an ionic solid generally describes a formula unit, not a discrete molecule.",
+    "summary": "Mass data → mole ratios → simplest integers → empirical formula → molar-mass multiplier.",
+    "checks": [
+      {
+        "prompt": "The empirical formula of C₆H₁₂O₆ is:",
+        "options": [
+          "CH₂O",
+          "C₂H₄O₂",
+          "C₆HO₆"
+        ],
+        "answer": 0,
+        "explanation": "Divide all subscripts by their greatest common factor, 6, to obtain 1:2:1."
+      },
+      {
+        "prompt": "Empirical mass is 30 and molecular molar mass is 60. The multiplier is:",
+        "options": [
+          "0.5",
+          "2",
+          "30"
+        ],
+        "answer": 1,
+        "explanation": "60/30 = 2. Every subscript in the empirical formula is doubled."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Balanced reaction calculations",
+    "goal": "Use balanced coefficients as mole ratios to calculate reactants or products.",
+    "explain": "A balanced equation conserves atoms of each element. Its coefficients represent ratios of particles and moles, not generally masses. To use a mass input, first convert to moles, apply the coefficient ratio, then convert the requested quantity.",
+    "ideas": "Change coefficients to balance an equation; changing chemical subscripts changes the substances. State whether a reactant is available in excess. A theoretical yield assumes the specified reaction proceeds according to the equation without loss or competing reactions.",
+    "rules": "For aA → bB, n(B) = n(A) × b/a when A reacts as assumed. For 2H₂ + O₂ → 2H₂O, hydrogen:oxygen:water mole ratio is 2:1:2.",
+    "example": "Given 4 mol H₂ and excess O₂, water formed = 4 × 2/2 = 4 mol. Oxygen consumed = 4 × 1/2 = 2 mol. With M(H₂O) = 18 g mol⁻¹, water mass = 4 × 18 = 72 g. Each conversion has a different purpose.",
+    "mistakes": "Do not read 2:1:2 as a gram ratio. Do not use an unbalanced equation. Real isolated yield can be lower than theoretical yield.",
+    "summary": "Balance first, convert to moles, apply coefficients, then convert to the requested units.",
+    "checks": [
+      {
+        "prompt": "For N₂ + 3H₂ → 2NH₃, 2 mol N₂ with excess H₂ yields:",
+        "options": [
+          "2 mol NH₃",
+          "4 mol NH₃",
+          "6 mol NH₃"
+        ],
+        "answer": 1,
+        "explanation": "The N₂:NH₃ mole ratio is 1:2. Two moles of N₂ give four moles of NH₃."
+      },
+      {
+        "prompt": "Balancing a chemical equation changes:",
+        "options": [
+          "Coefficients",
+          "Element identities",
+          "Subscripts inside compounds"
+        ],
+        "answer": 0,
+        "explanation": "Coefficients change numbers of particles. Subscripts define the substance and must not be altered to balance it."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Limiting reagent",
+    "goal": "Identify the reactant that restricts theoretical product and calculate excess remaining.",
+    "explain": "A limiting reagent is consumed first according to the balanced equation and fixes the maximum product. The reactant with the smaller mass or smaller mole amount is not automatically limiting; the required stoichiometric ratio matters.",
+    "ideas": "Calculate n/coefficient for each reactant. The smallest value gives the reaction extent available. Use this limiting extent to calculate all products and consumption. The other reactant is in excess only relative to this reaction.",
+    "rules": "For aA + bB → cC, extent = min(n(A)/a, n(B)/b), and n(C) = c × extent. Excess remaining = initial amount − coefficient × extent.",
+    "example": "For N₂ + 3H₂ → 2NH₃, start with 2 mol N₂ and 3 mol H₂. Ratios are 2/1 = 2 and 3/3 = 1. Hydrogen limits; extent = 1 mol. NH₃ yield = 2 mol; N₂ consumed = 1 mol, leaving 1 mol.",
+    "mistakes": "Do not pick the smaller initial mole value without dividing by coefficients. Do not calculate product independently from both reactants and add the results.",
+    "summary": "Compare stoichiometric availability, use the smallest extent and account for unused excess.",
+    "checks": [
+      {
+        "prompt": "For 2H₂ + O₂ → 2H₂O, with 2 mol H₂ and 2 mol O₂, the limiting reagent is:",
+        "options": [
+          "H₂",
+          "O₂",
+          "Neither"
+        ],
+        "answer": 0,
+        "explanation": "H₂ allows 2/2 = 1 extent; O₂ allows 2/1 = 2. H₂ limits."
+      },
+      {
+        "prompt": "In the same reaction, how much O₂ remains?",
+        "options": [
+          "0 mol",
+          "1 mol",
+          "2 mol"
+        ],
+        "answer": 1,
+        "explanation": "Two moles H₂ consume one mole O₂. Starting with two leaves one mole O₂."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "title": "Concentration of solutions",
+    "goal": "Calculate molarity, molality, mass percentage and mole fraction with the correct denominator.",
+    "explain": "Concentration states how much solute is present relative to a specified amount of solution or solvent. Different concentration measures answer different questions. The denominator is part of the definition, so do not substitute solvent volume for solution volume in molarity.",
+    "ideas": "Molarity uses litres of solution and can change with temperature as volume changes. Molality uses kilograms of solvent. Mass percentage uses total solution mass. Mole fraction uses total moles of all components and is dimensionless.",
+    "rules": "M = n(solute)/V(solution in L). Molality = n(solute)/mass(solvent in kg). Mass % = mass(solute)/mass(solution) × 100. xᵢ = nᵢ/Σn. For dilution without reaction or solute loss, M₁V₁ = M₂V₂.",
+    "example": "Dissolve 0.50 mol solute and make the final solution volume 2.0 L. Molarity = 0.25 mol L⁻¹. For 10 g solute mixed with 90 g solvent, mass percentage = 10/(10+90) × 100 = 10%. The denominators refer to different totals.",
+    "mistakes": "Do not use millilitres directly in n/V when reporting mol L⁻¹. Do not confuse molarity with molality. Dilution changes concentration, not moles of conserved solute.",
+    "summary": "Choose a definition, convert units, and identify exactly what is included in the denominator.",
+    "checks": [
+      {
+        "prompt": "0.20 mol solute in 500 mL final solution has molarity:",
+        "options": [
+          "0.0004 M",
+          "0.40 M",
+          "2.5 M"
+        ],
+        "answer": 1,
+        "explanation": "500 mL = 0.500 L. M = 0.20/0.500 = 0.40 mol L⁻¹."
+      },
+      {
+        "prompt": "Molality uses the mass of:",
+        "options": [
+          "Solution in grams",
+          "Solvent in kilograms",
+          "Solute in kilograms"
+        ],
+        "answer": 1,
+        "explanation": "Molality is moles of solute per kilogram of solvent, not per kilogram of solution."
+      }
+    ],
+    "visual": "mole"
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Ordered pairs",
+    "goal": "Use positional information to distinguish an ordered pair from an unordered set.",
+    "explain": "An ordered pair (a,b) records a first and second entry. Changing the order can change the pair. Equality requires corresponding entries to agree. This makes ordered pairs useful for coordinates, input-output records and relations.",
+    "ideas": "(2,5) and (5,2) are different ordered pairs, while {2,5} and {5,2} are the same set. Repeated entries are allowed in a pair, such as (3,3). The two positions may represent different types of quantities.",
+    "rules": "(a,b) = (c,d) if and only if a = c and b = d. In a coordinate plane, the first coordinate is horizontal and the second vertical.",
+    "example": "If (x+1,2y) = (4,10), match positions: x+1 = 4 gives x = 3; 2y = 10 gives y = 5. Do not match x+1 with 10 just because both are visible numbers.",
+    "mistakes": "Do not treat parentheses as set braces. A pair of equal entries still has two positions. A coordinate (0,3) is not interchangeable with (3,0).",
+    "summary": "Order gives meaning. Compare first with first and second with second.",
+    "checks": [
+      {
+        "prompt": "If (x,7) = (3,y), then:",
+        "options": [
+          "x = 7, y = 3",
+          "x = 3, y = 7",
+          "x = y = 10"
+        ],
+        "answer": 1,
+        "explanation": "Equality of ordered pairs requires matching corresponding entries."
+      },
+      {
+        "prompt": "Which equals (2,5)?",
+        "options": [
+          "(5,2)",
+          "(2,5)",
+          "{2,5}"
+        ],
+        "answer": 1,
+        "explanation": "Only the same entries in the same order represent the same ordered pair."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Cartesian product of sets",
+    "goal": "List every allowed ordered pair and count a finite Cartesian product.",
+    "explain": "The Cartesian product A × B consists of all ordered pairs whose first entry is in A and second entry is in B. Pair every element of A with every element of B once. This is the universe of possible input-output pairs before imposing a relation.",
+    "ideas": "A × B usually differs from B × A because order matters. If either set is empty, there are no possible pairs. An element of a product is an ordered pair, not a single number or an unordered two-element set.",
+    "rules": "A × B = {(a,b): a ∈ A and b ∈ B}. For finite sets, |A × B| = |A||B|. The multiplication rule counts choices for the two positions.",
+    "example": "For A = {1,2} and B = {p,q,r}, A × B = {(1,p),(1,q),(1,r),(2,p),(2,q),(2,r)}. There are 2 × 3 = 6 pairs. In B × A the first entry is a letter instead.",
+    "mistakes": "Do not add set sizes to count pairs. Do not omit pairs with repeated values when the sets overlap. Pairing is unrestricted until a relation specifies a condition.",
+    "summary": "First choose from A, then from B. Enumerate systematically or multiply finite counts.",
+    "checks": [
+      {
+        "prompt": "If |A| = 3 and |B| = 4, then |A × B| is:",
+        "options": [
+          "7",
+          "12",
+          "1"
+        ],
+        "answer": 1,
+        "explanation": "Each of the three first entries pairs with four second entries: 3 × 4 = 12."
+      },
+      {
+        "prompt": "A × ∅ contains:",
+        "options": [
+          "Every element of A",
+          "No ordered pairs",
+          "One empty pair"
+        ],
+        "answer": 1,
+        "explanation": "No second entry can be selected, so the Cartesian product is empty."
+      }
+    ],
+    "visual": "mapping"
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Relations as subsets",
+    "goal": "Represent a relation as selected pairs from a Cartesian product.",
+    "explain": "A relation from A to B is any subset of A × B. The Cartesian product lists all possible pairings; the relation selects those satisfying a rule or a specified list. Unlike a function, a general relation can omit some inputs or pair one input with several outputs.",
+    "ideas": "Pairs may be displayed as arrows, a table or points. These are different representations of the same membership information. An empty relation and the full Cartesian product are both valid relations from A to B.",
+    "rules": "R ⊆ A × B. For finite |A| = m and |B| = n, there are 2^(mn) possible relations because every pair may be included or excluded independently.",
+    "example": "Let A = {1,2}, B = {2,3,4} and relate a to b when b = 2a. The possible pairs are six, but only (1,2) and (2,4) satisfy the rule. R = {(1,2),(2,4)} is a subset of A × B.",
+    "mistakes": "Do not assume every relation must be a function. An arrow must begin in A and end in B for a relation from A to B. The defining rule must be tested against the stated sets.",
+    "summary": "A relation selects pairs; its rule does not replace the need to respect the domain sets.",
+    "checks": [
+      {
+        "prompt": "Any relation from A to B is a subset of:",
+        "options": [
+          "A ∪ B",
+          "A × B",
+          "B only"
+        ],
+        "answer": 1,
+        "explanation": "Its elements are ordered pairs with first entry from A and second entry from B."
+      },
+      {
+        "prompt": "If A × B contains two pairs, how many relations from A to B exist?",
+        "options": [
+          "2",
+          "4",
+          "6"
+        ],
+        "answer": 1,
+        "explanation": "A relation is a subset. A set with two elements has 2² = 4 subsets, including empty and full."
+      }
+    ],
+    "visual": "mapping"
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Domain and range of a relation",
+    "goal": "Extract actual first and second entries and distinguish the range from the target set.",
+    "explain": "The domain of a relation is the set of first entries that occur. Its range is the set of second entries that occur. If R is a relation from A to B, the domain can be smaller than A and the range can be smaller than B.",
+    "ideas": "Repeated appearances do not duplicate elements in a set. A codomain, when specified, is the declared target set B. It may contain values that are never reached by the relation.",
+    "rules": "Domain(R) = {a: some (a,b) ∈ R}. Range(R) = {b: some (a,b) ∈ R}. Read columns or arrow endpoints to construct these sets.",
+    "example": "For R = {(1,2),(1,4),(3,4)} from A = {1,2,3} to B = {2,4,6}, domain = {1,3} and range = {2,4}. The unused input 2 is not in the relation’s domain, and unused target 6 is not in its range.",
+    "mistakes": "Do not automatically copy A as the domain of a general relation. Do not count output 4 twice. Swapping first and second coordinates swaps the extraction procedure.",
+    "summary": "Domain means inputs actually appearing; range means outputs actually appearing.",
+    "checks": [
+      {
+        "prompt": "For R = {(2,5),(3,5)}, the range is:",
+        "options": [
+          "{2,3}",
+          "{5}",
+          "{5,5} as two distinct elements"
+        ],
+        "answer": 1,
+        "explanation": "Both pairs end at 5. A set lists that value once."
+      },
+      {
+        "prompt": "For R = {(1,4),(2,6)}, the domain is:",
+        "options": [
+          "{1,2}",
+          "{4,6}",
+          "{1,2,4,6}"
+        ],
+        "answer": 0,
+        "explanation": "The first coordinates are 1 and 2."
+      }
+    ],
+    "visual": "mapping"
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Function domain codomain and range",
+    "goal": "Decide whether a relation is a function and identify its three associated sets.",
+    "explain": "A function from A to B assigns exactly one output in B to every input in A. Different inputs may share an output. What is forbidden is a missing output for an input in A or multiple outputs for the same input.",
+    "ideas": "The domain is A, the codomain is the specified B, and the range consists of outputs actually produced. Range is contained in codomain. A formula alone does not always specify all of a function; its allowed inputs and target matter.",
+    "rules": "f: A → B. For each a ∈ A there is exactly one f(a) ∈ B. Many-to-one mappings can be functions. One-to-many relations cannot be functions from the stated input set.",
+    "example": "Let A = {−1,0,1}, B = {0,1,2} and f(x) = x². Outputs are 1,0,1. Every input has one output, so this is a function. Domain = {−1,0,1}, codomain = {0,1,2}, range = {0,1}. Sharing output 1 causes no problem.",
+    "mistakes": "Do not demand different outputs for all inputs unless one-to-one is required. Do not say codomain and range always coincide. Check every input in the stated domain.",
+    "summary": "Every input, exactly one output. Range records what is reached inside the declared codomain.",
+    "checks": [
+      {
+        "prompt": "Which can be a function?",
+        "options": [
+          "One input with two outputs",
+          "Two inputs sharing one output",
+          "An input in the domain with no output"
+        ],
+        "answer": 1,
+        "explanation": "A function permits many-to-one assignment as long as each input has exactly one output."
+      },
+      {
+        "prompt": "For f(x) = x² on {−2,2}, the range is:",
+        "options": [
+          "{−2,2}",
+          "{4}",
+          "{−4,4}"
+        ],
+        "answer": 1,
+        "explanation": "Both allowed inputs square to 4, so the range contains only 4."
+      }
+    ],
+    "visual": "mapping"
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Real-valued functions and graphs",
+    "goal": "Determine basic real domains and connect a function rule with its graph.",
+    "explain": "A real-valued function returns real numbers. Its natural real domain excludes inputs for which the given expression is undefined in the real numbers. A graph plots points (x,f(x)) for allowed inputs, and the vertical-line test checks whether each x has at most one output.",
+    "ideas": "Polynomial functions are defined for all real x. Rational expressions exclude zeros of the denominator. Even roots require a nonnegative radicand for real outputs. The absolute-value function gives distance from zero and never returns a negative value.",
+    "rules": "For 1/(x−2), x ≠ 2. For √(x−3), x ≥ 3. |x| = x if x ≥ 0 and −x if x < 0. The domain of a combined expression must satisfy all relevant restrictions.",
+    "example": "For f(x) = √(x−1)/(x−3), require x−1 ≥ 0 and x−3 ≠ 0. Hence domain [1,3) ∪ (3,∞). The numerator condition alone would incorrectly include x = 3, where division by zero occurs.",
+    "mistakes": "Do not take the square root of a negative number when a real domain is requested. A formula cancellation does not automatically restore excluded inputs of the original expression.",
+    "summary": "Apply every restriction before drawing or evaluating. A graph reflects the domain as well as the formula.",
+    "checks": [
+      {
+        "prompt": "The natural real domain of √(x−4) is:",
+        "options": [
+          "x > 4",
+          "x ≥ 4",
+          "All real x"
+        ],
+        "answer": 1,
+        "explanation": "The radicand must be nonnegative: x−4 ≥ 0. Equality is allowed because √0 exists."
+      },
+      {
+        "prompt": "For f(x) = 1/(x+2), which input is excluded?",
+        "options": [
+          "2",
+          "0",
+          "−2"
+        ],
+        "answer": 2,
+        "explanation": "At x = −2 the denominator is zero, so the expression is undefined."
+      }
+    ],
+    "visual": ""
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "title": "Algebra of functions",
+    "goal": "Combine functions pointwise and find the correct resulting domain.",
+    "explain": "Functions can be added, subtracted, multiplied or divided at a common input. The result is defined only where both original functions are defined. A quotient also requires the denominator function to be nonzero.",
+    "ideas": "Pointwise multiplication f(x)g(x) is not composition f(g(x)). A simpler algebraic expression can conceal restrictions inherited from the original functions, so carry the domain information through simplification.",
+    "rules": "(f+g)(x) = f(x)+g(x), (fg)(x) = f(x)g(x), (f/g)(x) = f(x)/g(x). For the quotient, use common domain with g(x) ≠ 0.",
+    "example": "Let f(x) = x+1 and g(x) = x−1, each on all real numbers. Sum = 2x, product = x²−1, both on all real x. Quotient = (x+1)/(x−1), defined only for x ≠ 1. At x = 2, quotient is 3.",
+    "mistakes": "Do not substitute g(x) into f when asked for the product. Do not allow zeros of g in a quotient. Shared domain means intersection, not union.",
+    "summary": "Combine outputs at the same input, intersect domains and add any division restriction.",
+    "checks": [
+      {
+        "prompt": "For f(x) = x and g(x) = 2, (f+g)(3) is:",
+        "options": [
+          "5",
+          "6",
+          "2"
+        ],
+        "answer": 0,
+        "explanation": "Evaluate both at x = 3: f(3)+g(3) = 3+2 = 5."
+      },
+      {
+        "prompt": "The quotient f/g additionally excludes inputs where:",
+        "options": [
+          "f(x) = 0",
+          "g(x) = 0",
+          "f(x) = g(x)"
+        ],
+        "answer": 1,
+        "explanation": "Division by zero is undefined. A zero numerator is allowed when the denominator is nonzero."
+      }
+    ],
+    "visual": ""
+  }
+]
