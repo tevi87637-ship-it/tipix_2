@@ -4,15 +4,17 @@ do $$
 declare admin_id uuid:=gen_random_uuid(); student_id uuid:=gen_random_uuid(); outsider uuid:=gen_random_uuid(); cv uuid;cid uuid;qid uuid;req uuid:=gen_random_uuid();r jsonb;f jsonb;k jsonb;row record;denied boolean;
 begin
 select id into strict cv from public.academic_curriculum_versions where class_level=11 and subject='Physics' and academic_year='2026-27';
-if (select count(*) from public.academic_concepts where curriculum_id=cv)<>5 then raise exception 'Five concepts required';end if;
+if (select count(*) from public.academic_concepts where curriculum_id=cv and lesson is not null)<>5 then raise exception 'Five concepts required';end if;
 if (select count(*) from public.academic_learning_tasks t join public.academic_concepts c on c.id=t.concept_id where c.curriculum_id=cv)<>35 then raise exception '35 complete lesson tasks required';end if;
 if exists(select 1 from public.academic_verified_question_bank q join public.academic_concepts c on c.id=q.concept_id where c.curriculum_id=cv and (q.is_published or q.source_year is not null or q.source_exam is not null)) then raise exception 'Drafts must not be published or mislabelled';end if;
 insert into auth.users(id,email,email_confirmed_at) values(admin_id,'physics-review-fixture@example.invalid',now()),(student_id,'physics-student-fixture@example.invalid',now()),(outsider,'physics-isolation-fixture@example.invalid',now());
 insert into public.tipix_student_profiles(id,full_name,school_name,school_city,grade,stream) values(admin_id,'Review fixture','Test','Test',11,'pcm'),(student_id,'Student fixture','Test','Test',11,'pcm'),(outsider,'Other fixture','Test','Test',11,'commerce');
 insert into tipix_private.academic_staff(user_id,role) values(admin_id,'admin');
 perform set_config('request.jwt.claim.sub',admin_id::text,true);execute 'set local role authenticated';
-r:=public.curriculum_review('inspect',jsonb_build_object('curriculum_id',cv));if jsonb_array_length(r->'concepts')<>5 then raise exception 'Admin lesson inspection failed';end if;
-perform public.curriculum_review('publish_curriculum',jsonb_build_object('curriculum_id',cv));
+r:=public.curriculum_review('inspect',jsonb_build_object('curriculum_id',cv));if (select count(*) from jsonb_array_elements(r->'concepts') c where jsonb_array_length(c->'tasks')>0)<>5 then raise exception 'Admin lesson inspection failed';end if;
+execute 'reset role';
+for row in select id from public.academic_concepts where curriculum_id=cv and lesson is not null loop
+execute 'set local role authenticated';perform public.publish_learning_concept(row.id);execute 'reset role';end loop;
 execute 'reset role';
 for row in select q.id from public.academic_verified_question_bank q join public.academic_concepts c on c.id=q.concept_id where c.curriculum_id=cv loop
 execute 'set local role authenticated';perform public.academic_api('publish_question',jsonb_build_object('question_id',row.id));execute 'reset role';end loop;
